@@ -16,11 +16,33 @@ Vec3 incrX(Vec3 _in) {
 	return _in;
 }
 
-/*Vec3 stackOverflow(Vec3 _in) {
+Vec3 stackOverflow(Vec3 _in) {
 	Vec3 temp = _in;
 	temp.y++;
 		return stackOverflow(temp);
-}*/
+}
+int Strlen(const char*src)
+{
+	int counter = 0;
+	for (int i = 0; src [i] !=0; ++i)
+	{
+		counter++;
+
+	}
+
+	//[i + 1] = 0;
+	return counter;
+
+}
+
+int Strcpy(char*dest, const char*src) {
+	int i = 0;
+	for (i = 0; i != Strlen(src); i++)
+		dest[i] = src[i];
+	dest[i + 1] = 0;
+	return 0;
+
+}
 
 int main()
 {
@@ -38,7 +60,7 @@ int main()
 	//bob = stackOverflow(bob);
 	//printf("val x : %f\n", bob.x);
 
-	Vec3 vecTab[4];
+	/*Vec3 vecTab[4];
 	vecTab[0]  = { 66,66,66 };
 	vecTab[1]  = { 4,5,6 };
 	vecTab[2]  = { 7,8,9 };
@@ -72,7 +94,7 @@ int main()
 	printf("%c\n", *ptr);
 
 	//int _i = 0;
-	auto start = std::chrono::system_clock::now();
+	/*auto start = std::chrono::system_clock::now();
 	int * bigBlock = (int*)malloc(1024 * 1024*1024);
 
 	for (int k = 0; k < 64 * 1024 * 1024; ++k) {
@@ -85,7 +107,32 @@ int main()
 	
 	printf("time ? : %d\n", millis);
 
-	int _i = 0;
+	int _i = 0;*/
+
+	/*Vec3 tableau[16];
+	Vec3 *tableau0 = (Vec3*)malloc(sizeof(Vec3) * 16);
+	memset(tableau, 0, sizeof(Vec3) * 16);
+
+	Vec3 *tableau1 = (Vec3*)calloc( sizeof(Vec3) , 16) ;
+	
+	Vec3 *tableau2 = new Vec3[16];
+	Vec3 * unSeulVec = new Vec3();
+	Vec3  unSeulVecAussiMaisSurLeTas = Vec3();
+
+	int _i = 0;*/
+
+	
+
+
+
+
+	const char * source = "mon lapin est dodu";
+	char * dest = (char*)calloc(1024, sizeof(char));
+	Strcpy(dest, source);
+
+	printf("dest len:%d val:%s \n", Strlen(source), dest);
+	
+	int sapin=0;
 
 	//std::cout << "Hello World!\n"; 
 
