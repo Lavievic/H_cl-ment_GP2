@@ -1,0 +1,12 @@
+﻿  ConsoleApplication1.cpp
+c:\workspace\h_cl-ment_gp2\dayone\consoleapplication1\consoleapplication1\consoleapplication1.cpp(12): warning C4244: 'return' : conversion de 'float' en 'int', perte possible de données
+c:\workspace\h_cl-ment_gp2\dayone\consoleapplication1\consoleapplication1\consoleapplication1.cpp(47): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type 'Vec3'
+c:\workspace\h_cl-ment_gp2\dayone\consoleapplication1\consoleapplication1\consoleapplication1.cpp(86): warning C4477: 'printf' : la chaîne de format '%d' nécessite un argument de type 'int', mais l'argument variadique 1 est de type '_Rep'
+          with
+          [
+              _Rep=__int64
+          ]
+  c:\workspace\h_cl-ment_gp2\dayone\consoleapplication1\consoleapplication1\consoleapplication1.cpp(86): note: utilisez '%lld' dans la chaîne de format
+  c:\workspace\h_cl-ment_gp2\dayone\consoleapplication1\consoleapplication1\consoleapplication1.cpp(86): note: utilisez '%Id' dans la chaîne de format
+  c:\workspace\h_cl-ment_gp2\dayone\consoleapplication1\consoleapplication1\consoleapplication1.cpp(86): note: utilisez '%I64d' dans la chaîne de format
+  ConsoleApplication1.vcxproj -> C:\Workspace\H_cl-ment_GP2\DayOne\ConsoleApplication1\x64\Debug\ConsoleApplication1.exe
