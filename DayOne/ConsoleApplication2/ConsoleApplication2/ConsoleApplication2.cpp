@@ -296,11 +296,33 @@ int mul2(int a, int b) {
 
 int Div(int a, int b) {
 	if (a == 0 )return 0;
-	if (b < 0)return -Div(a, -b);
+
+	if (b < 0 )return -Div(a, -b);
 	else
 		return 1 + Div(a - b, b);
 
 }
+int Div2(int a, int b)
+{
+	if (a == 0)		return 0;
+	if (b < 0 && a < 0)		return -Div2(a, b);
+	if (a < 0)		return -Div2(-a, b);
+	if (b < 0)		return -Div2(a, -b);
+	if (a < b)		return 0;
+	return 1 + Div2(a - b, b);
+
+}
+
+int quotient(int a, int b)
+{
+	if (a == 0) return 0;
+	else
+	{
+		return a - mul(Div2(a, b), b);
+		return (0);
+	}
+}
+
 
 
 void TestRec() {
@@ -311,7 +333,8 @@ void TestRec() {
 	int foo5 = mul(2, -4);
 	int foo6 = mul2(2, -4);
 	int foo7 = Div(20, 2);
+	int foo8 = quotient(16, 3);
 	int i = 0;
-	printf("%d\n", foo7);
+	printf("%d\n", foo8);
 }
 
