@@ -323,7 +323,27 @@ int quotient(int a, int b)
 	}
 }
 
+int rec_strlen(const char *str)
+{
+	if (*str == 0)
+		return 0 ;
+	return  1 + rec_strlen(str+1);
+}
 
+
+int strlcpy(char *dst, const char *src)
+{
+	*dst = *src;
+	if (*src == 0) return 0;
+	 strlcpy(dst+1, src + 1);
+}
+
+void ZeroMemory(char * dst, int size)
+{
+	if (size == 0)return;
+	*dst = 0;
+	ZeroMemory(dst + 1, size -1);
+}
 
 void TestRec() {
 	int foo = add_2(2, 2);
@@ -335,6 +355,17 @@ void TestRec() {
 	int foo7 = Div(20, 2);
 	int foo8 = quotient(16, 3);
 	int i = 0;
-	printf("%d\n", foo8);
+
+	char dest[30];
+	int len = rec_strlen("sapin");
+	int leny = strlcpy(dest, "boule");
+	int szBuf = 32;
+
+	char * buffer = (char*)malloc(szBuf + 1);
+	buffer[32] = 'X';
+	ZeroMemory(buffer, szBuf);
+
+	printf("%c", buffer[32]);
+	system("pause");
 }
 
