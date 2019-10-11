@@ -443,7 +443,14 @@ const char * StrStr1(const char *s0,const char * s1)
 {
 	if (startsWith(s0, s1)) 
 		return s0;
-	
+	else
+		if (*s0 == 0)
+		{
+			if (*s1 == 0)
+				return s0;
+			else
+				return nullptr;
+		}
 	else
 		return StrStr1(s0 + 1, s1);
 }
