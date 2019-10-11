@@ -97,8 +97,8 @@ int Strcmp(char * meule, char * aiguille)
 	int lenMeule = strlen(meule);
 	int lenAiguille = strlen(aiguille);
 
-	int maxLen = Max(lenMeule, lenAiguille);
-	int minlen = Min(lenMeule, lenAiguille);
+	int maxLen = max(lenMeule, lenAiguille);
+	int minlen = min(lenMeule, lenAiguille);
 
 	for (int i = 0; i < minlen; i++)
 	{
@@ -113,8 +113,16 @@ int Strcmp(char * meule, char * aiguille)
 	if (minlen == lenMeule)return 1;
 
 	return -1;
+}*/
+
+int Strcmp(const char * s0, const char * s1)
+{
+	if (*s0 == 0 && *s1 == 0)return 0;
+	else if (*s0 < *s1)return 1;
+	else if (*s0 > *s1)return -1;
+	return Strcmp(s0 + 1, s1 + 1);
 }
-*/
+
 
 
 
@@ -345,6 +353,106 @@ void ZeroMemory(char * dst, int size)
 	ZeroMemory(dst + 1, size -1);
 }
 
+void MemcpyRec(char * dst, const char * src, int size)
+{
+	if (size == 0)return;
+	*dst = *src;
+	MemcpyRec(dst + 1, src + 1, size - 1);
+}
+
+int StrcmpRec(char * str0, char * str1)
+{
+	if (*str0 == 0 && *str1 == 0)return 0;
+	if (*str0 == 0)return 1;
+	if (*str1 == 0)return -1;
+	if (*str0 < *str1)return 1;
+	return StrcmpRec(str0 + 1, str1 + 1);
+}
+
+char StrcatRec(char * dest,const char * src)
+{	
+	if (*dest == 0)
+	{
+		if (*src == 0)
+			return 0;
+		else
+		{
+			*dest = *src;
+			*(dest + 1) = 0;
+			StrcatRec(dest + 1, src + 1);
+		}
+	}
+	else
+		StrcatRec(dest + 1, src);
+}
+
+char * StrStrRec(char * str, char * look)
+{
+	static bool change = true;
+	static char * ref = look;
+	if (change)
+	{
+		ref = look;
+		change = false;
+	}
+	if (*look == 0)
+	{
+		return str;
+	}
+	else if (*str==0)
+	{
+		change = true;
+		return nullptr;
+	}
+	if (*str == *look)
+	{
+		if (StrStrRec(str + 1, look + 1) != nullptr)
+		{
+			change = true;
+			return str;
+		}
+	}
+	if (*look == * ref )
+		return StrStrRec(str + 1, look);
+	else return nullptr;
+}
+
+int _StrChr(const char * s0, char s1, const char * _start)
+{
+	if (*s0 == 0 && s1 != 0)return -1;
+	else if (*s0 == s1)
+		return s0 - _start;
+	else
+		return _StrChr(s0 + 1, s1, _start);
+}
+
+bool startsWith(const char * s0, const char * s1)
+{
+	
+	if (*s0 == 0 && *s1 != 0)
+		return false;
+	if (*s1 == 0)
+		return true;
+	if (*s0 != *s1)
+		return false;
+	else
+		return startsWith(s0 + 1, s1 + 1);
+}
+
+const char * StrStr1(const char *s0,const char * s1)
+{
+	if (startsWith(s0, s1)) 
+		return s0;
+	
+	else
+		return StrStr1(s0 + 1, s1);
+}
+
+void assert(bool b)
+{
+	if (!b) throw std::exception();
+}
+
 void TestRec() {
 	int foo = add_2(2, 2);
 	int foo2 = add_3(3, 2);
@@ -356,7 +464,9 @@ void TestRec() {
 	int foo8 = quotient(16, 3);
 	int i = 0;
 
-	char dest[30];
+	char dest[32] = "qsdfghjklm";
+	char dest2[32] = "qsdfghazertyuiop";
+	char dest3[32] = "qsdfghazerty";
 	int len = rec_strlen("sapin");
 	int leny = strlcpy(dest, "boule");
 	int szBuf = 32;
@@ -364,6 +474,31 @@ void TestRec() {
 	char * buffer = (char*)malloc(szBuf + 1);
 	buffer[32] = 'X';
 	ZeroMemory(buffer, szBuf);
+
+	char toto[32];
+	char tata[32] = "it's me";
+	MemcpyRec(toto, tata, strlen(tata) + 1);
+	if (toto[0] != tata[0])
+		throw std::exception("hmm?");
+
+	const char* animaux = "licorne";
+	const char* chasseur = "lic";
+	assert(startsWith("animaux", "chasseur")== false);
+
+	char src[10] = "azerty";
+	char src2[10] = "uiop";
+
+	char * lutin = StrStrRec(dest,src);
+	*lutin;
+	char * lutin2 = StrStrRec(dest, src);
+	*lutin2;
+	char * lutin3 = StrStrRec(dest, src2);
+	*lutin3;
+	StrcatRec(dest, src);
+
+	assert(StrStr1("animaux", "chasseur") == nullptr);
+
+	
 
 	printf("%c", buffer[32]);
 	system("pause");
