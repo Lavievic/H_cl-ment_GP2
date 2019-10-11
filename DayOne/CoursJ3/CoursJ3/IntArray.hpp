@@ -92,6 +92,8 @@ public:
 	}
 
 	
+	void insert(int pos, int elem);
+	/*
 	void insert(int pos, int elem)
 	{
 		ensure(curSize + 1);
@@ -101,6 +103,6 @@ public:
 		}
 		data[pos] = elem;
 		curSize++;
-	}
+	}*/
 
 };
