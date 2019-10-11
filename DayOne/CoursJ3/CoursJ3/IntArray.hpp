@@ -10,8 +10,14 @@ public:
 	int * data;
 	int curSize = 0;
 	int maxSize = 0;
+	
 
 	static int TEST;
+
+	int getLenght()
+	{
+		return curSize;
+	}
 
 	IntArray(int size, const char * name = "") {
 		//
@@ -48,15 +54,10 @@ public:
 
 	void set(int pos, int elem)
 	{
-		if (pos < maxSize)
-		{
-			this->data[pos] = elem;
-		}
-		else {
-			ensure(pos);
-		}
-		this->data[pos] = elem;
-		curSize++;
+		ensure(pos + 1);
+		data[pos] = elem;
+		if (pos >= curSize)
+			curSize = pos + 1;
 	}
 
 
@@ -65,10 +66,10 @@ public:
 		this->data[pos] = elem;
 	}
 
-	int operator() (int pos)
+	/*int operator() (int pos)
 	{
 		return data[pos];
-	}
+	}*/
 	
 	void push_back(int elem)
 	{
@@ -79,17 +80,7 @@ public:
 		
 	}
 
-	void push_front(int elem)
-	{
-		ensure(curSize+1);
-		//for (int i = 0; i < curSize; i++)
-		for (int i = curSize; i > 0; i--)
-		{
-			data[i] = data[i-1];
-		}
-		data[0] = elem;
-		curSize++;
-	}
+	void push_front(int elem);
 
 	
 	void insert(int pos, int elem);
@@ -105,4 +96,36 @@ public:
 		curSize++;
 	}*/
 
+	int searchPosition(int element)
+	{
+		// parcourir le contenu
+		//si la relation d'ordre n'est pas satisfaite
+		//renvoyer la position précédente
+		for (int i = 0; i < getLenght(); i++)
+		{
+			if (element <= data[i])
+			{
+				return i;
+			}
+		}
+		
+		return getLenght();
+	}
+
+	bool remove(int valeur) {
+		int idx = -1;
+		for (int i = 0; i < getLenght(); i++)
+		{
+			if (data[i] == valeur );
+			{
+				idx = i;
+				break;
+			}
+		}
+		if (idx == -1)return false;
+		for (int i = idx+1; i < getLenght() - 1; i++)
+			data[i] = data[i + 1];
+		data[curSize - 1] = 0;
+		curSize--;
+	}
 };

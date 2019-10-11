@@ -5,7 +5,10 @@
 #include <iostream>
 #include "IntArray.hpp"
 
-
+void assert(bool b)
+{
+	if (!b) throw std::exception();
+}
 
 int main()
 {
@@ -35,7 +38,43 @@ int main()
 			t.insert(5, 66);
 		}
 
+		{
+			/*IntArray t(3);
+			t.set ;
+			t[1] = 69;
+			t[2] = 70;
 
+			t.remove(t[1]);
+			assert(t[0] == 68);
+			assert(t[1] == 70);
+			int i = 0;*/
+			tab0.data[0] = 69;
+			tab0.data[1] = 70;
+			tab0.data[2] = 72;
+			tab0.data[3] = 73;
+			tab0.data[4] = 74;
+			tab0.data[5] = 75;
+
+
+			tab0.remove(70);
+
+			
+		}
+
+
+		{
+			IntArray t(1);
+			t.set(0, 5);
+			t.set(1, 6);
+			t.set(2, 10);
+			
+
+			printf("%d\n", t.searchPosition(1)) ;
+			printf("%d\n", t.searchPosition(5)) ;
+			printf("%d\n", t.searchPosition(6)) ;
+			printf("%d\n", t.searchPosition(8)) ;
+		}
+		
 	
 	std::cout << "Hello World!\n";
 }
