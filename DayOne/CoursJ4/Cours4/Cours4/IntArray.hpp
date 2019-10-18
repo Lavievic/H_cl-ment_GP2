@@ -18,7 +18,6 @@ public:
 	IntArray(int size = 1, const char * name = "");
 
 	~IntArray() {
-		printf("detruite! %s\n", name.c_str());
 	}
 
 	bool ensure(int size);
@@ -119,48 +118,20 @@ public:
 		IntArray nuData(1, "nudata");
 		for (int i = 0; i < getLength(); i++) {
 			int val = get(i);
-			printf("val: %d\n", val);
-
 			int pos = nuData.searchPosition(val);
-			printf("future pos: %d\n", pos);
 			nuData.insert(nuData.searchPosition(val), val);
-
-			printf("[");
-			for (int j = 0; j < nuData.getLength(); j++)
-				printf("%d ", nuData[j]);
-			printf("]\n");
-
 		}
 
 		for (int i = 0; i < getLength(); i++) {
 			set(i, nuData.get(i));
 		}
-	
+		//inserer tout les elements au bon endroit un par un
+		//
+
+		//creer un tableau temporaire
+		//inserer dans l'ordre dans ce nouveau tableau
+		//recuperer ce nouveau tableau et détruire le courant
 	}
-
-
-	/*void triinsertion(int tableau[], int longueur) {
-		
-		int i, memory, compt, marqueur;
-		for (int i = 0; i < longueur ; i++)
-		{
-			memory = tableau[i];
-			compt = i - 1;
-
-			do
-			{
-				marqueur = false;
-				if (tableau[compt] > memory)
-				{
-					tableau[compt + 1] = tableau[compt];
-					compt--;
-					marqueur = true;
-				}
-				if (compt < 0) marqueur = false;
-			} while (marqueur);
-			tableau[compt + 1] = memory;
-		}
-	}*/
 
 	void swap(int pos0, int pos1)
 	{
@@ -170,10 +141,8 @@ public:
 	}
 
 	void insertSort() {
-		for (int i = 1; i < curSize; i++)
-		{
+		for (int i = 1; i < curSize; i++) {
 			int j = i;
-
 			while (j > 0 && data[j] < data[j - 1])
 			{
 				swap(j, j - 1);
@@ -182,4 +151,54 @@ public:
 		}
 	}
 
+	/// 4 
+	// 3 parcours * 2 reparcours et permutation  
+
+	// n 
+	// 2 n  
+
+	// 5
+
+	// 0 2 3 4 5
+	// 1 1 2 3 4
+
+	// 5 parcours sur i
+		// 1 parcours entre i et 0 
+
+	// 5 *4		 // 20 + 12 + 6 ~ 38 ~ 5*5
+	// 4 *3    +
+	// 3 * 2  +
+	// 1 ...  +
+
+	//6 * 5 + 38 = 68
+
+
+	// tableau de taille[n]
+	// n-1  parcours * n -2 parcours
+	// n^² 
+
+	// renvoie la position ou on devrait s'inserer
+	int binarySearch(int key) {
+		//demander la recherche entre 0 et la taille
+		return _binarySearch(key, 0, curSize);
+	}
+
+
+	int _binarySearch(int key, int start, int end) {
+		printf("%d s:%d e:%d\n", key, start, end);
+		if (end <= start) return start;
+		if (end == start + 1) {
+			if (key > data[start])	return end;
+			if (key < data[end])	return start;
+			return start;
+		}
+
+		int pivot = (end + start) / 2;
+		if (key == data[pivot])return pivot;
+
+		if (key < data[pivot])
+			return _binarySearch(key, start, pivot);
+		else
+			return _binarySearch(key, pivot, end);
+	}
 };

@@ -1,2 +1,3 @@
 ﻿  Cours4.cpp
-  Cours4.vcxproj -> C:\Workspace\H_cl-ment_GP2\DayOne\CoursJ4\Cours4\Debug\Cours4.exe
+c:\workspace\h_cl-ment_gp2\dayone\coursj4\cours4\cours4\tree.hpp(122): error C4716: 'Node<int>::dfsPrintReverse' : doit retourner une valeur
+c:\workspace\h_cl-ment_gp2\dayone\coursj4\cours4\cours4\tree.hpp(115): error C4716: 'Node<int>::dfsPrint' : doit retourner une valeur
