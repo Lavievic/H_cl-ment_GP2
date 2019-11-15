@@ -1,38 +1,12 @@
 ﻿  App.cpp
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(27): warning C4244: 'return' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(52): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(53): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(54): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(55): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(56): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(57): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(66): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(107): warning C4305: 'argument' : troncation de 'double' à 'float'
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(107): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(109): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(120): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(143): warning C4305: 'argument' : troncation de 'double' à 'float'
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(143): warning C4244: 'argument' : conversion de 'double' en 'int', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(145): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(149): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(176): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(178): warning C4244: 'argument' : conversion de 'int' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(182): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
-          with
-          [
-              T=float
-          ]
-c:\workspace\h_cl-ment_gp2\app\app\app.cpp(193): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(44): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(45): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(46): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(47): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(48): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(49): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(337): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(353): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(370): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\app\app\app.cpp(387): warning C4551: liste d'arguments manquante dans l'appel de fonction
   App.vcxproj -> C:\Workspace\H_cl-ment_GP2\App\Debug\App.exe
