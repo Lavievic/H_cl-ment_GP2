@@ -14,12 +14,12 @@ public:
 	{
 		Viseur.setSize(Vector2f((size.x / 5), (size.y / 1.5f)));
 		Viseur.setOrigin(Vector2f((Viseur.getSize().x) / 2, 0));
-		Viseur.setFillColor(sf::Color::Cyan);
+		Viseur.setFillColor(sf::Color::Green);
 		BoxCollider.setSize(size);
 		tank.setSize(size);
 		tank.setOrigin(Vector2f((size.x / 2), (size.y / 2)));
 		position = pos;
-		tank.setFillColor(sf::Color::Magenta);
+		tank.setFillColor(sf::Color::Yellow);
 		tank.setPosition(pos);
 
 	};
