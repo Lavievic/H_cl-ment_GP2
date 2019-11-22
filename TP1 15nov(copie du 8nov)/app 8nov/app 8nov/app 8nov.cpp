@@ -108,7 +108,7 @@ void drawBall(sf::RenderWindow &win)
 	{
 
 		win.draw(Elem.ball);
-		Elem.ball.move(Elem.u / 8, Elem.r / 8);
+		Elem.ball.move(Elem.u / 5, Elem.r / 5);
 		
 	}
 }
@@ -213,7 +213,7 @@ int main()
 				{
 					Ball Balle = Ball(CharList[0].Viseur.getPosition(), 5);
 					Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
-					Balle.v = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
+					Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
 					BallList.push_back(Balle);
 				}
 				if (sf::Joystick::isButtonPressed(0, 5))

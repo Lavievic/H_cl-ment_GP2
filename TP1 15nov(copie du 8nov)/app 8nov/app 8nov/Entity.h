@@ -14,7 +14,7 @@ public:
 	{
 		Viseur.setSize(Vector2f((size.x / 5), (size.y / 1.5f)));
 		Viseur.setOrigin(Vector2f((Viseur.getSize().x) / 2, 0));
-		Viseur.setFillColor(sf::Color::Green);
+		Viseur.setFillColor(sf::Color::Red);
 		BoxCollider.setSize(size);
 		tank.setSize(size);
 		tank.setOrigin(Vector2f((size.x / 2), (size.y / 2)));
