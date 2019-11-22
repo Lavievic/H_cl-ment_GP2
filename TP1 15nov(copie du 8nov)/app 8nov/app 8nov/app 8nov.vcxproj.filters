@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Fichiers de ressources">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Fichiers sources\B2D">
       <UniqueIdentifier>{e418c3a6-5577-47b0-8c55-14c92477dea5}</UniqueIdentifier>
     </Filter>
@@ -171,6 +167,9 @@
     <ClInclude Include="..\..\..\..\Box2D\Box2D\Box2D.h">
       <Filter>Fichiers sources\B2D</Filter>
     </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -325,6 +324,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Box2D\Box2D\Rope\b2Rope.cpp">
       <Filter>Fichiers sources\B2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
