@@ -60,7 +60,7 @@ int main()
 
 			
 		}
-
+	
 
 		{
 			IntArray t(1);
@@ -74,6 +74,15 @@ int main()
 			printf("%d\n", t.searchPosition(6)) ;
 			printf("%d\n", t.searchPosition(8)) ;
 		}
+
+		{
+			IntArray t(16);
+			t.fillWithRandom(16);
+			t.sort();
+
+			int o = 0;
+		}
+
 		
 	
 	std::cout << "Hello World!\n";

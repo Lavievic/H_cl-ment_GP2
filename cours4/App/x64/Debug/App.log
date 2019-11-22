@@ -1,0 +1,5 @@
+﻿  App.cpp
+d:\programmes(data)\windows\téléchargements\hae_gp2-master\cours4\app\lib.hpp(5): fatal error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
+  Lib.cpp
+d:\programmes(data)\windows\téléchargements\hae_gp2-master\cours4\app\lib.hpp(5): fatal error C1083: Impossible d'ouvrir le fichier include : 'SFML/Graphics.hpp' : No such file or directory
+  Génération de code en cours...

@@ -10,13 +10,30 @@ public:
 	int * data;
 	int curSize = 0;
 	int maxSize = 0;
-	
+
 
 	static int TEST;
 
 	int getLenght()
 	{
 		return curSize;
+	}
+
+	int get(int pos) {
+		return data[pos];
+	}
+
+	int & operator() (int pos) {
+		ensure(pos + 1);
+		if (pos >= curSize) curSize = pos + 1;
+		return data[pos];
+	}
+
+	//attention je ne deplace pas le curseur de taille
+	int & operator[] (int pos) {
+		ensure(pos + 1);
+		if (pos >= curSize) curSize = pos + 1;
+		return data[pos];
 	}
 
 	IntArray(int size, const char * name = "") {
@@ -45,8 +62,8 @@ public:
 		{
 			int *Tmp = data;
 			data = new int[size];
-			for (int i = 0; i < maxSize; i++)			
-				data[i] = Tmp[i];			
+			for (int i = 0; i < maxSize; i++)
+				data[i] = Tmp[i];
 			maxSize = size;
 			delete(Tmp);
 		}
@@ -70,19 +87,19 @@ public:
 	{
 		return data[pos];
 	}*/
-	
+
 	void push_back(int elem)
 	{
-		ensure(curSize+1);
+		ensure(curSize + 1);
 		data[curSize] = elem;
 		curSize++;
 
-		
+
 	}
 
 	void push_front(int elem);
 
-	
+
 	void insert(int pos, int elem);
 	/*
 	void insert(int pos, int elem)
@@ -108,7 +125,7 @@ public:
 				return i;
 			}
 		}
-		
+
 		return getLenght();
 	}
 
@@ -116,16 +133,51 @@ public:
 		int idx = -1;
 		for (int i = 0; i < getLenght(); i++)
 		{
-			if (data[i] == valeur );
+			if (data[i] == valeur);
 			{
 				idx = i;
 				break;
 			}
 		}
 		if (idx == -1)return false;
-		for (int i = idx+1; i < getLenght() - 1; i++)
+		for (int i = idx + 1; i < getLenght() - 1; i++)
 			data[i] = data[i + 1];
 		data[curSize - 1] = 0;
 		curSize--;
+	}
+
+
+	void fillWithRandom(int nbElem) {
+		ensure(nbElem);
+		for (int i = 0; i < nbElem; ++i) {
+			int val = std::rand()%100;
+			set(i, val);
+		}
+	}
+
+
+	void sort()
+	{
+		IntArray nuData(1, "nudata");
+		for (int i = 0; i < getLenght(); i++) {
+			int val = get(i);
+			printf("val: %d\n", val);
+
+			int pos = nuData.searchPosition(val);
+			printf("future pos: %d\n", pos);
+			nuData.insert(nuData.searchPosition(val), val);
+
+			printf("[");
+			for (int j = 0; j < nuData.getLenght(); j++)
+				printf("%d ", nuData[j]);
+			printf("]\n");
+
+		}
+
+		for (int i = 0; i < getLenght(); i++) {
+			set(i, nuData.get(i));
+		}
+
+
 	}
 };

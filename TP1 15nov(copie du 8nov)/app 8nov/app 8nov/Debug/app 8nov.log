@@ -1,0 +1,12 @@
+﻿  app 8nov.cpp
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(40): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(41): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(42): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(43): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(44): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(45): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(183): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(194): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(206): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(218): warning C4551: liste d'arguments manquante dans l'appel de fonction
+  app 8nov.vcxproj -> C:\Workspace\H_cl-ment_GP2\TP1 15nov(copie du 8nov)\app 8nov\Debug\app 8nov.exe
