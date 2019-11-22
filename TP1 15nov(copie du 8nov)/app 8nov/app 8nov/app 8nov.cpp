@@ -116,7 +116,7 @@ void drawBall(sf::RenderWindow &win)
 int main()
 {
 	bool Shoot = false;
-	Entity Player = Entity(Vector2f(200, 150), Vector2f(80, 80));
+	Entity Player = Entity(Vector2f(200, 200), Vector2f(80, 80));
 	Entity Ennemy = Entity(Vector2f(1700, 900), Vector2f(80, 80));
 
 
@@ -203,17 +203,17 @@ int main()
 		{
 
 			float u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
-			float r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
-			if (u > 25 || u < -25 || r>25 || r < -25)
+			float v = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
+			if (u > 25 || u < -25 || v > 25 || v < -25)
 			{
-				float angle = (atan2(u, r) * 180) / 3.141592654;
+				float angle = (atan2f(u, v) * 180) / 3.1415926535;
 				CharList[0].Viseur.setRotation(-angle);
 
 				if (!Shoot && sf::Joystick::isButtonPressed(0, 5))
 				{
 					Ball Balle = Ball(CharList[0].Viseur.getPosition(), 5);
 					Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
-					Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
+					Balle.v = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
 					BallList.push_back(Balle);
 				}
 				if (sf::Joystick::isButtonPressed(0, 5))
