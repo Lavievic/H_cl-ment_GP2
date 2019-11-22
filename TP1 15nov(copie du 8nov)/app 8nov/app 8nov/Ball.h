@@ -9,6 +9,8 @@ public:
 	sf::Vector2f position;
 	sf::CircleShape ball;
 	sf::CircleShape BallCollider;
+	
+
 	Ball(sf::Vector2f pos, float size)
 	{
 		ball.setRadius(size);
@@ -18,6 +20,9 @@ public:
 
 
 	}
+
+	
+
 	void SetPosition()
 	{
 		ball.setPosition(position);
