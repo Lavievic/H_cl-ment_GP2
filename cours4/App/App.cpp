@@ -10,6 +10,11 @@
 
 using namespace sf;
 
+static sf::Shader * simpleShader = nullptr;
+static sf::Shader * redShader = nullptr;
+static sf::Shader * bloomShader = nullptr;
+static sf::Shader * blurShader = nullptr;
+
 
 
 static Vector2f mousePos[4] = {
@@ -47,14 +52,14 @@ sf::Color hsv(int hue, float sat, float val)
 
 	switch (h)
 	{
-		default:
-		case 0:
-		case 6: return sf::Color(val * 255, t * 255, p * 255);
-		case 1: return sf::Color(q * 255, val * 255, p * 255);
-		case 2: return sf::Color(p * 255, val * 255, t * 255);
-		case 3: return sf::Color(p * 255, q * 255, val * 255);
-		case 4: return sf::Color(t * 255, p * 255, val * 255);
-		case 5: return sf::Color(val * 255, p * 255, q * 255);
+	default:
+	case 0:
+	case 6: return sf::Color(val * 255, t * 255, p * 255);
+	case 1: return sf::Color(q * 255, val * 255, p * 255);
+	case 2: return sf::Color(p * 255, val * 255, t * 255);
+	case 3: return sf::Color(p * 255, q * 255, val * 255);
+	case 4: return sf::Color(t * 255, p * 255, val * 255);
+	case 5: return sf::Color(val * 255, p * 255, q * 255);
 	}
 }
 
@@ -64,13 +69,13 @@ void drawCurve(sf::RenderWindow &win, float now) {
 	sf::Color blue = sf::Color::Blue;
 	int nb = 320;
 	float stride = 1280.0 / nb;
-	
+
 	int ofsX = 0;
 	if (fmodf(now, 2.0) <= 1) {
 		red.a = 0;
 	}
 
-	for (int i = 0; i < nb+1; ++i) {
+	for (int i = 0; i < nb + 1; ++i) {
 		double ratio = 1.0 * i / nb;
 		double x = ofsX + stride * i;
 		double y = 400;
@@ -88,29 +93,30 @@ void drawCurve(sf::RenderWindow &win, float now) {
 
 		y += sin(ratio * 8.0 + now * 1.5) * 120;
 
-			//y += sin(ratio * 8.0 + now) * (128 * 1.0 + cos(now*16) * 4);
+		//y += sin(ratio * 8.0 + now) * (128 * 1.0 + cos(now*16) * 4);
 
-			/*
-			int radius = 160;
-			x = 500 + radius * cos( ratio * 2 * 3.141569) + sin(now*10 * cos(ratio)) * 8 * (1.0 + rd() * 100);
-			y = 500 + radius * sin( ratio * 2 * 3.141569) + cos(now * 10 * sin(ratio)) * 10 * (1.0 + rd() * 100);
-			*/
-			/*
-		sf::Color c = sf::Color(
-			lerp(blue.r, red.r,ratio),
-			lerp(blue.g, red.g, ratio),
-			lerp(blue.b, red.b, ratio)
-		);
+		/*
+		int radius = 160;
+		x = 500 + radius * cos( ratio * 2 * 3.141569) + sin(now*10 * cos(ratio)) * 8 * (1.0 + rd() * 100);
+		y = 500 + radius * sin( ratio * 2 * 3.141569) + cos(now * 10 * sin(ratio)) * 10 * (1.0 + rd() * 100);
 		*/
-		//sf::Color c = i % 2 ? red : blue;
+		/*
+	sf::Color c = sf::Color(
+		lerp(blue.r, red.r,ratio),
+		lerp(blue.g, red.g, ratio),
+		lerp(blue.b, red.b, ratio)
+	);
+	*/
+	//sf::Color c = i % 2 ? red : blue;
 
 		sf::Color c = hsv(ratio * 360, 0.8, 0.8);
 
-		sf::Vertex vertex(Vector2f(x,y), c);
+		sf::Vertex vertex(Vector2f(x, y), c);
 		va.append(vertex);
 	}
 	win.draw(va);
 }
+static sf::Texture * whiteTex = nullptr;
 
 void drawCatmull(sf::RenderWindow &win, float now) {
 	sf::VertexArray va(sf::LineStrip);
@@ -128,7 +134,7 @@ void drawCatmull(sf::RenderWindow &win, float now) {
 	points.push_back(Vector2f(1280, 720));
 	*/
 	for (int i = 0; i < 4; i++) {
-		points.push_back( mousePos[i] );
+		points.push_back(mousePos[i]);
 	}
 
 	sf::CircleShape shape(16, (int)(2 * 3.141569 * 100));
@@ -145,14 +151,14 @@ void drawCatmull(sf::RenderWindow &win, float now) {
 		Vector2f pos = Lib::plot2(ratio, points);
 		x = pos.x;
 		y = pos.y;
-		
+
 		sf::Vertex vertex(Vector2f(x, y), c);
 		va.append(vertex);
 	}
 
 	static float cRatio = 0.0;
 	static bool autoreverse = false;
-	Vector2f pos = Lib::plot2(autoreverse? cRatio: (1- cRatio), points);
+	Vector2f pos = Lib::plot2(autoreverse ? cRatio : (1 - cRatio), points);
 	shape.setPosition(pos);
 
 	cRatio += 0.001f;
@@ -165,7 +171,7 @@ void drawCatmull(sf::RenderWindow &win, float now) {
 	win.draw(shape);
 }
 
-static RectangleShape	* sh=nullptr;
+static RectangleShape	* sh = nullptr;
 static Vector2f			shPos;
 static Vector2f			shDir;
 
@@ -213,7 +219,7 @@ public:
 
 	std::function<void(Particle*)> bhv;
 
-	Particle( sf::Shape * spr ) {
+	Particle(sf::Shape * spr) {
 		this->spr = spr;
 		dir.y = 1;
 	}
@@ -238,19 +244,19 @@ public:
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	std::cout << "Hello World!\n";
 
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 2;
-	
-	
+
+
 	sf::RenderWindow window(sf::VideoMode(1280, 720), "SFML works!", sf::Style::Default, settings);
 	window.setVerticalSyncEnabled(true);
-	
 
-	sf::CircleShape shape(100.f, (int) (2 * 3.141569 * 100));
+
+	sf::CircleShape shape(100.f, (int)(2 * 3.141569 * 100));
 	shape.setPosition(30, 30);
-	shape.setFillColor(sf::Color(0xE884D4ff) );
+	shape.setFillColor(sf::Color(0xE884D4ff));
 	shape.setOutlineThickness(4);
 	shape.setOutlineColor(sf::Color(0xFF8A70ff));
 
@@ -267,7 +273,26 @@ int main()
 		printf("no such font\n");
 	}
 
+	if (!sf::Shader::isAvailable())
+	{
+		printf("no shader avail\n");
+	}
+
+	simpleShader = new Shader();
+	if (!simpleShader->loadFromFile("res/simple.vert", "res/simple.frag"))
+		printf("unable to load shaders\n");
+
+
+	
+
 	std::vector< Particle * > vec;
+
+	whiteTex = new Texture();
+	if (!whiteTex->create(1, 1)) printf("tex crea failed\n");
+	whiteTex->setSmooth(true);
+	unsigned int col = 0xffffffff;
+	whiteTex->update((const sf::Uint8*)&col, 1, 1, 0, 0);
+	
 
 	initMovingSquare();
 
@@ -277,82 +302,82 @@ int main()
 	{
 		sf::Event event;//recup les evenement clavier/pad
 		frameStart = clock.getElapsedTime();
-		while (window.pollEvent(event))	{
-			switch (event.type ) {
-				case sf::Event::KeyReleased:
-					if (event.key.code == sf::Keyboard::I)
-						printf("instant fps %f\n", fps[(step-1)%4]);
-					if (event.key.code == sf::Keyboard::F)
-						printf("fps %f\n", 0.25f*(fps[0] + fps[1] + fps[2] + fps[3]) );
-					break;
+		while (window.pollEvent(event)) {
+			switch (event.type) {
+			case sf::Event::KeyReleased:
+				if (event.key.code == sf::Keyboard::I)
+					printf("instant fps %f\n", fps[(step - 1) % 4]);
+				if (event.key.code == sf::Keyboard::F)
+					printf("fps %f\n", 0.25f*(fps[0] + fps[1] + fps[2] + fps[3]));
+				break;
 
-				case sf::Event::KeyPressed:
-					{
-						if (event.key.code == sf::Keyboard::F1) mousePos[0] = sf::Vector2f(sf::Mouse::getPosition(window));
-						if (event.key.code == sf::Keyboard::F2) mousePos[1] = sf::Vector2f(sf::Mouse::getPosition(window));
-						if (event.key.code == sf::Keyboard::F3) mousePos[2] = sf::Vector2f(sf::Mouse::getPosition(window));
-						if (event.key.code == sf::Keyboard::F4) mousePos[3] = sf::Vector2f(sf::Mouse::getPosition(window));
+			case sf::Event::KeyPressed:
+			{
+				if (event.key.code == sf::Keyboard::F1) mousePos[0] = sf::Vector2f(sf::Mouse::getPosition(window));
+				if (event.key.code == sf::Keyboard::F2) mousePos[1] = sf::Vector2f(sf::Mouse::getPosition(window));
+				if (event.key.code == sf::Keyboard::F3) mousePos[2] = sf::Vector2f(sf::Mouse::getPosition(window));
+				if (event.key.code == sf::Keyboard::F4) mousePos[3] = sf::Vector2f(sf::Mouse::getPosition(window));
 
-						
-					}
-					break;
 
-				case sf::Event::Closed:
-					window.close();
-					break;
+			}
+			break;
 
-				default:
-					break;
+			case sf::Event::Closed:
+				window.close();
+				break;
+
+			default:
+				break;
 			}
 		}
 
 		const int squareSpeed = 3;
 
-		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))			{ 
-			shPos.x -= squareSpeed;  
-			shDir.x = -1; 
-			shDir.y = 0; 
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			shPos.x -= squareSpeed;
+			shDir.x = -1;
+			shDir.y = 0;
 		}
-		else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Right))		{ 
-			shPos.x += squareSpeed;  
-			shDir.x = 1; 
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			shPos.x += squareSpeed;
+			shDir.x = 1;
 			shDir.y = 0;
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-			shPos.y -= squareSpeed;  
-			shDir.x = 0;  
-			shDir.y = -1; 
-		}
-		else if (sf::Keyboard::isKeyPressed( sf::Keyboard::Down))		{
-			shPos.y += squareSpeed;  
+			shPos.y -= squareSpeed;
 			shDir.x = 0;
-			shDir.y = 1; 
+			shDir.y = -1;
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+			shPos.y += squareSpeed;
+			shDir.x = 0;
+			shDir.y = 1;
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
 			if (shDir.x == 0 && shDir.y == 0) shDir.y = 1;
 
-			RectangleShape * pr = new RectangleShape(Vector2f(8,8));
+			RectangleShape * pr = new RectangleShape(Vector2f(8, 8));
 			pr->setFillColor(Color(0xB34139ff));
 			pr->setOrigin(4, 4);
 			pr->setPosition(sh->getPosition());
 			Particle * p = new Particle(pr);
 
 			float shDirLen = sqrt(shDir.x*shDir.x + shDir.y*shDir.y);
-			p->dir.x = shDir.x/ shDirLen;
+			p->dir.x = shDir.x / shDirLen;
 			p->dir.y = shDir.y / shDirLen;
 			p->bhv = [](Particle * part) {
 				Vector2f ppos = part->spr->getPosition();
-				ppos.x += part->dir.x*6;
-				ppos.y += part->dir.y*6;
+				ppos.x += part->dir.x * 6;
+				ppos.y += part->dir.y * 6;
 				part->spr->setPosition(ppos);
 			};
 			vec.push_back(p);
 		}
 		sh->setPosition(shPos);
 
-		
+
 		myFpsCounter.setPosition(8, 8);
 		myFpsCounter.setFillColor(sf::Color::Red);
 		myFpsCounter.setFont(*font);
@@ -363,21 +388,31 @@ int main()
 		}
 		every--;
 
-		window.clear( sf::Color(0x9EFFC6ff));//nettoie la frame
+		window.clear(sf::Color(0x9EFFC6ff));//nettoie la frame
 
-		drawMovingSquare( window );
-		
+		drawMovingSquare(window);
+
 		//drawCurve(window, clock.getElapsedTime().asSeconds() );
 		//drawCatmull(window, clock.getElapsedTime().asSeconds());
 
 		//window.draw(shape);//on demande le dessin d' une forme
 		window.draw(myFpsCounter);
 
+		sf::RectangleShape sh(Vector2f(64, 64));
+		sh.setPosition(50, 50);
+		sh.setTexture(whiteTex);
+		float now = clock.getElapsedTime().asSeconds();
+		simpleShader->setUniform("time",now);
+
+
+
+		window.draw(sh, simpleShader);
+
 		for (int k = 0; k < (int)vec.size(); k++) {
 			Particle * p = vec[vec.size() - k - 1];
 			p->update();
 			if (p->killed) {
-				vec.erase(vec.begin()+k);
+				vec.erase(vec.begin() + k);
 			}
 			else {
 				p->draw(window);
