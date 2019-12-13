@@ -10,16 +10,15 @@ c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(47): warning C4244: '=' : con
 c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(48): warning C4305: '=' : troncation de 'double' à 'float'
 c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(71): warning C4305: '=' : troncation de 'double' à 'float'
 c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(85): warning C4305: '=' : troncation de 'double' à 'float'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(103): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(161): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(167): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(204): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(205): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(209): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(210): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(215): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(216): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(219): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(220): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(193): warning C4715: 'Entity::getStateName' : les chemins de contrôle ne retournent pas tous une valeur
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(99): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(157): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(163): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(201): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(202): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(206): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(207): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(212): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(213): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(216): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(217): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
   App.vcxproj -> C:\Workspace\H_cl-ment_GP2\mt_case\App\Debug\App.exe

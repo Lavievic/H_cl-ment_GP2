@@ -91,10 +91,6 @@ void Entity::update(double dt) {
 		
 	if (abs(dy) < 0.05) dy = 0;
 
-	
-
-	
-
 	syncCoord();
 }
 
@@ -185,11 +181,12 @@ std::string Entity::getStateName() {
 		break;
 	case ES_RUNNING:
 		return "run";
+	case ES_COVER:
+		return "cover";
 	default:
 		break;
 	}
-
-
+	return "ERR";
 }
 
 void Entity::updateControls()
@@ -227,7 +224,10 @@ void Entity::updateControls()
 
 	float speedLen = sqrt(dx*dx + dy * dy);
 	if (abs(dx) == 0 && abs(dy) == 0)
+	{
+		if(getState() != ES_IDLE && getState() != ES_COVER)
 		changeState(ES_IDLE);
+	}
 	else if (speedLen <= max_lat_speed * 0.75)
 		changeState(ES_WALKING);
 	else
@@ -239,12 +239,14 @@ void Entity::updateState()
 {
 	switch (state)
 	{
-	case ES_IDLE:
-		spr->setFillColor(sf::Color::White);
+	case ES_IDLE: {
+			spr->setFillColor(sf::Color::White);
 
-		if (stateLife >= 60)
-		{
-			printf("statelife %d\n", stateLife);
+			bool isNearWall = willCollide(cx + 1, cy) || willCollide(cx - 1, cy) || willCollide(cx, cy + 1) || willCollide(cx, cy - 1);
+			if (stateLife >= 60
+				&& isNearWall) {
+				changeState(ES_COVER);
+			}
 		}
 		break;
 	case ES_WALKING:
