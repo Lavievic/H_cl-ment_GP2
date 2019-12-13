@@ -17,6 +17,10 @@ void Entity::setPosPixel(float pixelX, float pixelY) {
 }
 
 void Entity::update(double dt) {
+	
+	updateState();
+	updateControls();
+
 	rx += dx;
 	
 	///////X BLOCK 
@@ -84,17 +88,12 @@ void Entity::update(double dt) {
 			
 		}
 	dy *= 0.92f;
-
-	//cap dx min val to avoid sliding
+		
 	if (abs(dy) < 0.05) dy = 0;
 
-	if( (dx == 0) && (dy == 0) && getState() != ES_IDLE) {
-		changeState( ES_IDLE );
-	}
+	
 
-	if (getState() == ES_FALLING) {
-		dropParticles();
-	}
+	
 
 	syncCoord();
 }
@@ -150,7 +149,10 @@ void Entity::draw(sf::RenderWindow & win) {
 
 void Entity::changeState(EntityState nes)
 {
+	
+	if (nes == state) return;
 	EntityState oldState = state;
+
 
 	switch (oldState)
 	{
@@ -163,7 +165,7 @@ void Entity::changeState(EntityState nes)
 	default:
 		break;
 	}
-
+	stateLife = 0;
 	state = nes;
 }
 
@@ -178,11 +180,89 @@ std::string Entity::getStateName() {
 	case ES_IDLE:
 		return "idle";
 		break;
+	case ES_WALKING:
+		return "walk";
+		break;
 	case ES_RUNNING:
 		return "run";
-		break;
-	case ES_FALLING:
-		return "fall";
+	default:
 		break;
 	}
+
+
 }
+
+void Entity::updateControls()
+{
+	auto lat_acc = 0.055;
+	auto max_lat_speed = 0.50;
+
+
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+		dx += lat_acc;
+		if (dx > max_lat_speed) dx = max_lat_speed;
+		if (getState() == ES_IDLE) changeState(ES_RUNNING);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+		dx -= lat_acc;
+		if (dx < -max_lat_speed) dx = -max_lat_speed;
+		if (getState() == ES_IDLE) changeState(ES_RUNNING);
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	{
+		dy -= lat_acc;
+		if (dy < -max_lat_speed) dy = -max_lat_speed;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+		dy += lat_acc;
+		if (dy < -max_lat_speed) dy = -max_lat_speed;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+		setPosPixel(100, 600);
+		dx = dy = 0.0f;
+		changeState(ES_IDLE);
+	}
+
+	float speedLen = sqrt(dx*dx + dy * dy);
+	if (abs(dx) == 0 && abs(dy) == 0)
+		changeState(ES_IDLE);
+	else if (speedLen <= max_lat_speed * 0.75)
+		changeState(ES_WALKING);
+	else
+		changeState(ES_RUNNING);
+
+}
+
+void Entity::updateState()
+{
+	switch (state)
+	{
+	case ES_IDLE:
+		spr->setFillColor(sf::Color::White);
+
+		if (stateLife >= 60)
+		{
+			printf("statelife %d\n", stateLife);
+		}
+		break;
+	case ES_WALKING:
+		spr->setFillColor(sf::Color::Green);
+		break;
+	case ES_RUNNING:
+		spr->setFillColor(sf::Color::Blue);
+		break;
+	case ES_COVER:
+		spr->setFillColor(sf::Color::Yellow);
+		break;
+
+
+
+	default:
+		break;
+	}
+	stateLife++;
+}
+
+

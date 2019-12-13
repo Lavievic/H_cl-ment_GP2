@@ -30,52 +30,21 @@ void Game::makePlatforms() {
 
 	platforms.push_back( Vector2i( 8, cScreenHeight-1) );
 	platforms.push_back( Vector2i(8, cScreenHeight-2) );
+
+
+	for (int i = 0; i < 4; i++)
+	{
+
+	}
 }
 
 
 void Game::update(double dt){
-	auto lat_acc = 0.055;
-	auto max_lat_speed = 0.50;
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		player->dx += lat_acc;
-		if (player->dx > max_lat_speed) player->dx = max_lat_speed;
-		if( player->getState() == ES_IDLE) player->changeState(ES_RUNNING);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		player->dx -= lat_acc;
-		if (player->dx < -max_lat_speed) player->dx = -max_lat_speed;
-		if (player->getState() == ES_IDLE) player->changeState(ES_RUNNING);
-	}
-	if (	sf::Keyboard::isKeyPressed(sf::Keyboard::Up) )
-	{
-		player->dy -= lat_acc;
-		if (player->dy < -max_lat_speed) player->dy = -max_lat_speed;
-	
-		//player->changeState( ES_FALLING );
-	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		player->dy += lat_acc;
-		if (player->dy < -max_lat_speed) player->dy = -max_lat_speed;
-	
-		//player->changeState(ES_FALLING);
-	}
-	
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter) ) {
-		player->setPosPixel(100,600); 
-		player->dx = player->dy = 0.0f;
-		//player->applyGravity = false;
-		//player->changeState( ES_IDLE );
-	}
-
 	for (auto it = evec.begin(); it != evec.end();) {
 		Entity * ent = *it;
 		ent->update(dt);
 		it++;
 	}
-
-	wasPressed[sf::Keyboard::Up] = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-	wasPressed[sf::Keyboard::Down] = sf::Keyboard::isKeyPressed(sf::Keyboard::Down);
 }
 
 void Game::draw(RenderWindow & win)

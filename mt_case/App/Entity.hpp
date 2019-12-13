@@ -6,8 +6,9 @@ using namespace sf;
 
 enum EntityState {
 	ES_IDLE,
-	ES_RUNNING,
-	ES_FALLING,
+	ES_RUNNING,	
+	ES_WALKING,
+	ES_COVER,
 };
 
 class Entity {
@@ -44,6 +45,7 @@ public:
 	void setPosPixel(float pixelX, float pixelY);
 
 	void update(double dt);
+	int stateLife = 0;
 
 	void dropParticles();
 
@@ -62,6 +64,17 @@ public:
 
 	std::string getStateName();
 
+	void updateControls();
+
+	
+
+	void updateState();
+
+
+
 private:
 	EntityState	state = ES_IDLE;
 };
+
+
+
