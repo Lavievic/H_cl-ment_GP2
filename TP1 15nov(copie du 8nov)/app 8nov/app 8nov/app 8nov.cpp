@@ -160,6 +160,34 @@ void world(sf::RenderWindow &win)
 					BallList[i].BallLife += 1;
 				}
 			}
+			if (WallList[4].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x - 15, BallList[i].ball.getPosition().y));
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[5].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y + 15));
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
 			
 		
 			if (!CharList[0].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()) && !CharList[1].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
@@ -243,16 +271,19 @@ int main()
 	height = window.getSize().y;
 	width = window.getSize().x;
 	Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 20),&Brick);
-	Wall Down = Wall(Vector2f(0, (window.getSize().y) - 3), Vector2f(window.getSize().x, 10), &Brick);
+	Wall Down = Wall(Vector2f(0, (window.getSize().y) - 3), Vector2f(window.getSize().x, 20), &Brick);
 	Wall Left = Wall(Vector2f(0, 0), Vector2f(20, height), &Brick);
 	Wall Right = Wall(Vector2f(window.getSize().x - 3, 0), Vector2f(20, height), &Brick);
-	
+	Wall Mid = Wall(Vector2f(1650, 600), Vector2f(80, 80), &Brick);
+	Wall Mida = Wall(Vector2f(1650, 601), Vector2f(80, 80), &Brick);
 	
 	
 	WallList.push_back(Up);
 	WallList.push_back(Down);
 	WallList.push_back(Left);
 	WallList.push_back(Right);
+	WallList.push_back(Mid);
+	WallList.push_back(Mida);
 	
 
 
