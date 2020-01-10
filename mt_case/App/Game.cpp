@@ -11,7 +11,7 @@ void Game::init()
 	RectangleShape *sh = new RectangleShape(Vector2f(12, 24));
 	sh->setFillColor(sf::Color::Magenta);
 	sh->setOrigin(6, 24);
-	
+
 	Entity * ent = new Entity(sh);
 	ent->setPosPixel(100, 600);
 	evec.push_back(ent);
@@ -21,6 +21,7 @@ void Game::init()
 	memset(wasPressed, 0, sizeof(wasPressed));
 
 	makePlatforms();
+
 }
 
 void Game::makePlatforms() {
@@ -28,23 +29,18 @@ void Game::makePlatforms() {
 	int cScreenHeight = 720 / Entity::CELL_WIDTH;
 
 
-	platforms.push_back( Vector2i( 8, cScreenHeight-1) );
-	platforms.push_back( Vector2i(8, cScreenHeight-2) );
-
-
-	for (int i = 0; i < 4; i++)
-	{
-
-	}
+	platforms.push_back(Vector2i(8, cScreenHeight - 1));
+	platforms.push_back(Vector2i(8, cScreenHeight - 2));
 }
 
-
-void Game::update(double dt){
+void Game::update(double dt) {
 	for (auto it = evec.begin(); it != evec.end();) {
 		Entity * ent = *it;
 		ent->update(dt);
 		it++;
 	}
+
+	wasPressed[sf::Keyboard::Up] = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 }
 
 void Game::draw(RenderWindow & win)
@@ -57,12 +53,10 @@ void Game::draw(RenderWindow & win)
 
 	auto CW = Entity::CELL_WIDTH;
 	RectangleShape cell;
-
-
 	cell.setFillColor(sf::Color(0x918EF0ff));
 	cell.setSize(Vector2f(CW, CW));
 	for (Vector2i & pl : platforms) {
-		cell.setPosition(pl.x*CW, pl.y*CW);
+		cell.setPosition(pl.x * CW, pl.y * CW);
 		win.draw(cell);
 	}
 
@@ -84,16 +78,16 @@ void Game::draw(RenderWindow & win)
 	win.draw(line);
 }
 
-bool Game::willCollide(Entity * end, int cx, int cy)
+bool Game::willCollide(int cx, int cy)
 {
 	int cScreenWidth = 1280 / Entity::CELL_WIDTH;
-	int cScreenHeight = 720/ Entity::CELL_WIDTH;
+	int cScreenHeight = 720 / Entity::CELL_WIDTH;
 
 	if (cx < 0) return true;
-	else if (cx >= cScreenWidth  ) return true;
-	
+	else if (cx >= cScreenWidth) return true;
+
 	if (cy < 0) return true;
-	else if (cy >= cScreenHeight ) return true;
+	else if (cy >= cScreenHeight) return true;
 
 	for (Vector2i & cell : platforms)
 		if (cell.x == cx && cell.y == cy)
@@ -113,5 +107,5 @@ void Game::togglePlatform(int cx, int cy)
 	}
 	platforms.push_back(Vector2i(cx, cy));
 
-			
+
 }

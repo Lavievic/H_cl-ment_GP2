@@ -1,24 +1,88 @@
-﻿  Entity.cpp
+﻿  App.cpp
 c:\workspace\h_cl-ment_gp2\mt_case\app\fadingparticle.h(18): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
           with
           [
               T=float
           ]
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(35): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(36): warning C4305: '=' : troncation de 'double' à 'float'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(47): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(48): warning C4305: '=' : troncation de 'double' à 'float'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(71): warning C4305: '=' : troncation de 'double' à 'float'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(85): warning C4305: '=' : troncation de 'double' à 'float'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(99): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(157): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(163): warning C4065: l'instruction switch contient 'default' mais aucune étiquette 'case'
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(201): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(202): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(206): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(207): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(212): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(213): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(216): warning C4244: '+=' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\mt_case\app\entity.cpp(217): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(213): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(216): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(217): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(221): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(224): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(225): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(247): warning C4244: 'initialisation' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(248): warning C4244: 'initialisation' : conversion de 'T' en 'int', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(257): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(289): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(288): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(298): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(297): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(330): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(334): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(362): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(414): warning C4244: 'argument' : conversion de 'double' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(420): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(435): warning C4244: 'argument' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(436): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\mt_case\app\app.cpp(449): warning C4244: 'argument' : conversion de 'double' en 'float32', perte possible de données
   App.vcxproj -> C:\Workspace\H_cl-ment_GP2\mt_case\App\Debug\App.exe

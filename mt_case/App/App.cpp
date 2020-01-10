@@ -14,6 +14,7 @@
 #include "FadingParticle.h"
 #include "Action.hpp"
 #include <Box2D/Box2D.h>
+#include "Dijkstra.hpp"
 
 using namespace sf;
 
@@ -114,7 +115,10 @@ static Vector2f p1;
 
 static RectangleShape shp;
 
-static RectangleShape walls[4];
+static sf::VertexArray dijline;
+
+static RectangleShape	walls[4];
+static Dijkstra			pathes;
 
 int main() {
 
@@ -222,6 +226,9 @@ int main() {
 
 	g.init();
 
+	dijline = sf::VertexArray(sf::PrimitiveType::LineStrip);
+	dijline.clear();
+
 	while (window.isOpen())//on passe tout le temps DEBUT DE LA FRAME 
 	{
 		sf::Event event;//recup les evenement clavier/pad
@@ -274,6 +281,24 @@ int main() {
 						g.pvec.push_back(p);
 					}
 					
+					if( g.dijo.computed )
+					{
+						std::vector<Vector2f> result;
+						bool found = g.dijo.findPath(result, Vector2f(
+								(int)(mousePos.x / Entity::CELL_WIDTH),
+								(int)(mousePos.y / Entity::CELL_WIDTH)));
+
+						dijline.clear();
+						if (found) {
+							for (const sf::Vector2f & vtx : result)
+								dijline.append(
+									sf::Vertex(
+										sf::Vector2f(	
+											(vtx.x+0.5) * Entity::CELL_WIDTH,
+											(vtx.y+0.5) * Entity::CELL_WIDTH), sf::Color::Red));
+
+						}
+					}
 					break;
 				}
 
@@ -295,7 +320,28 @@ int main() {
 					break;
 
 				case sf::Event::KeyReleased:
-					
+					if (event.key.code == sf::Keyboard::F9) {
+						vector<Vector2f> graph;
+
+						int size = 30;
+						for (int x = g.player->cx - 20; x < g.player->cx + 20; x++) {
+							for (int y = g.player->cy - 20; y < g.player->cy + 20; y++) {
+								if(!g.willCollide(x,y))
+									graph.push_back(Vector2f(x, y));
+							}
+						}
+						printf("len:%d\n", graph.size());
+						g.dijo.compute(graph, Vector2f(g.player->cx , g.player->cy));
+						printf("computed\n");
+					}
+
+					if (event.key.code == sf::Keyboard::F10) {
+
+					}
+
+					if (event.key.code == sf::Keyboard::F11) {
+
+					}
 					break;
 
 				case sf::Event::KeyPressed:
@@ -418,6 +464,7 @@ int main() {
 			window.draw(walls[i]);
 		}
 
+		window.draw(dijline);
 		window.draw(myFpsCounter);
 
 		///Draw all bloomed before this

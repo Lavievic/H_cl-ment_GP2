@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <direct.h>
 #include <functional>
+#include <algorithm>
 
 #include "Lib.hpp"
 #include "Particle.h"
@@ -12,6 +13,7 @@
 #include <Box2D/Box2D.h>
 
 #include "Entity.hpp"
+#include "Dijkstra.hpp"
 
 using namespace sf;
 
@@ -36,6 +38,9 @@ public:
 	void makePlatforms();
 	void update(double dt);
 	void draw(RenderWindow & win);
-	bool willCollide(Entity*, int cx, int cy);
+	bool willCollide(int cx, int cy);
 	void togglePlatform(int cx, int cy);
+
+	Dijkstra dijo;
 };
+
