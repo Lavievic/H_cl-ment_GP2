@@ -7,7 +7,7 @@ c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.c
 c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(47): warning C4244: 'argument' : conversion de 'float' en 'sf::Uint8', perte possible de données
 c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(70): warning C4018: '<' : incompatibilité signed/unsigned
 c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(105): warning C4018: '<' : incompatibilité signed/unsigned
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(343): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(469): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
               T=unsigned int
@@ -16,7 +16,7 @@ c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.c
           [
               T=float
           ]
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(344): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(470): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
               T=unsigned int
@@ -25,12 +25,12 @@ c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.c
           [
               T=float
           ]
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(345): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(471): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
           with
           [
               T=float
           ]
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(346): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(472): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
           with
           [
               T=unsigned int
@@ -39,13 +39,13 @@ c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.c
           [
               T=float
           ]
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(346): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(472): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
           with
           [
               T=float
           ]
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(477): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(484): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(507): warning C4551: liste d'arguments manquante dans l'appel de fonction
-c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(513): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(621): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(628): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(651): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(657): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
   app 8nov.vcxproj -> C:\Workspace\H_cl-ment_GP2\TP1 15nov(copie du 8nov)\app 8nov\Debug\app 8nov.exe

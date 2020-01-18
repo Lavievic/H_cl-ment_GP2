@@ -258,6 +258,132 @@ void world(sf::RenderWindow &win)
 					BallList[i].BallLife += 1;
 				}
 			}
+			if (WallList[11].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y + 15));
+				BallList[i].r = -BallList[i].r;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[12].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x - 15, BallList[i].ball.getPosition().y));
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[13].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y - 15));
+				BallList[i].r = -BallList[i].r;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[14].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x + 15, BallList[i].ball.getPosition().y));
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[15].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y + 15));
+				BallList[i].r = -BallList[i].r;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[16].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x - 15, BallList[i].ball.getPosition().y));
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[17].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y - 15));
+				BallList[i].r = -BallList[i].r;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[18].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x + 15, BallList[i].ball.getPosition().y));
+				BallList[i].u = -BallList[i].u;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
+			if (WallList[19].wallet.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
+			{
+				BallList[i].ball.setPosition(Vector2f(BallList[i].ball.getPosition().x, BallList[i].ball.getPosition().y + 15));
+				BallList[i].r = -BallList[i].r;
+				if (BallList[i].BallLife == 1)
+				{
+					BallList.erase(BallList.begin() + i);
+					break;
+				}
+				if (BallList[i].BallLife == 0)
+				{
+					BallList[i].BallLife += 1;
+				}
+			}
 			
 		
 			if (!CharList[0].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()) && !CharList[1].tank.getGlobalBounds().intersects(BallList[i].ball.getGlobalBounds()))
@@ -344,13 +470,22 @@ int main()
 	Wall Down = Wall(Vector2f(0, (window.getSize().y) - 3), Vector2f(window.getSize().x, 20), &Brick);
 	Wall Left = Wall(Vector2f(0, 0), Vector2f(20, height), &Brick);
 	Wall Right = Wall(Vector2f(window.getSize().x - 3, 0), Vector2f(20, height), &Brick);
-	Wall MidG = Wall(Vector2f(1400, 600), Vector2f(20, 80), &Brick);
-	Wall MidH = Wall(Vector2f(1400, 580), Vector2f(80, 20), &Brick);
-	Wall MidD = Wall(Vector2f(1460, 600), Vector2f(20, 80), &Brick);
-	Wall MidB = Wall(Vector2f(1400, 660), Vector2f(80, 20), &Brick);
-	Wall CenG = Wall(Vector2f(550, 240), Vector2f(20, 80), &Brick);
+	Wall MidG = Wall(Vector2f(1400, 600), Vector2f(20, 120), &Brick);
+	Wall MidH = Wall(Vector2f(1400, 580), Vector2f(120, 20), &Brick);
+	Wall MidD = Wall(Vector2f(1500, 600), Vector2f(20, 120), &Brick);
+	Wall MidB = Wall(Vector2f(1400, 700), Vector2f(120, 20), &Brick);
+	Wall CenG = Wall(Vector2f(550, 240), Vector2f(20, 120), &Brick);
 	Wall CenH = Wall(Vector2f(570, 240), Vector2f(550, 20), &Brick);
-	Wall CenD = Wall(Vector2f(1120, 240), Vector2f(20, 80), &Brick);
+	Wall CenD = Wall(Vector2f(1120, 240), Vector2f(20, 120), &Brick);
+	Wall CenB = Wall(Vector2f(570, 340), Vector2f(550, 20), &Brick);
+	Wall CenbG = Wall(Vector2f(550, 740), Vector2f(20, 120), &Brick);
+	Wall CenbH = Wall(Vector2f(570, 740), Vector2f(550, 20), &Brick);
+	Wall CenbD = Wall(Vector2f(1120, 740), Vector2f(20, 120), &Brick);
+	Wall CenbB = Wall(Vector2f(570, 840), Vector2f(550, 20), &Brick);
+	Wall MigG = Wall(Vector2f(150, 400), Vector2f(20, 120), &Brick);
+	Wall MigH = Wall(Vector2f(150, 380), Vector2f(120, 20), &Brick);
+	Wall MigD = Wall(Vector2f(250, 400), Vector2f(20, 120), &Brick);
+	Wall MigB = Wall(Vector2f(150, 500), Vector2f(120, 20), &Brick);
 	
 	
 	WallList.push_back(Up);
@@ -364,6 +499,15 @@ int main()
 	WallList.push_back(CenG);
 	WallList.push_back(CenH);
 	WallList.push_back(CenD);
+	WallList.push_back(CenB);
+	WallList.push_back(CenbG);
+	WallList.push_back(CenbH);
+	WallList.push_back(CenbD);
+	WallList.push_back(CenbB);
+	WallList.push_back(MigG);
+	WallList.push_back(MigH);
+	WallList.push_back(MigD);
+	WallList.push_back(MigB);
 	
 
 
