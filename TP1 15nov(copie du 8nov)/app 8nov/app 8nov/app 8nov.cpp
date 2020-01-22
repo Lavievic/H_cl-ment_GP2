@@ -555,7 +555,7 @@ int main()
 	}
 
 	sf::Music music;
-	if (!music.openFromFile("light.ogg"))
+	if (!music.openFromFile("music.ogg"))
 		return -1;
 	music.setVolume(35);
 	music.play();
