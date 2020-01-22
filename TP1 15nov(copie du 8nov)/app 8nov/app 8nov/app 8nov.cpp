@@ -555,9 +555,9 @@ int main()
 	}
 
 	sf::Music music;
-	if (!music.openFromFile("Winter.ogg")) { printf("unable to load true soviet music\n"); }
+	if (!music.openFromFile("light.ogg"))
+		return -1;
 	music.setVolume(35);
-	music.setLoop(true);
 	music.play();
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
