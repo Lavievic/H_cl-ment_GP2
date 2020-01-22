@@ -5,7 +5,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
-#include <SFML/Audio.hpp>
+#include "SFML/Audio.hpp"
 #include "Lib.h"
 #include <direct.h>
 #include <SFML/Graphics.hpp>
@@ -554,13 +554,19 @@ int main()
 		printf("pasMur");
 	}
 
-	sf::Music music;
-	if (!music.openFromFile("music.ogg"))
-		return -1;
-	music.setVolume(35);
-	music.play();
+	
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
+	
+	/*sf::Music music;
+	
+	if (!music.openFromFile("music.ogg"))
+	{
+		std::cout << "ERROR" << std::endl;
+	}
+
+	music.play();*/
+	
 	height = window.getSize().y;
 	width = window.getSize().x;
 	Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 20), &Brick);
