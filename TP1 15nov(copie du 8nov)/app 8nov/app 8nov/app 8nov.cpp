@@ -5,7 +5,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
-
+#include <SFML/Audio.hpp>
 #include "Lib.h"
 #include <direct.h>
 #include <SFML/Graphics.hpp>
@@ -51,7 +51,7 @@ sf::Color hsv(int hue, float sat, float val)
 static Vector2f shPos(0, 0);
 static int height;
 static int width;
-//static Vector2f ballpos(shPos);
+
 
 int squareSpeed = 3;
 int BallSpeed = 5;
@@ -66,11 +66,12 @@ Vector2f Beta;
 Vector2f Beta2;
 sf::Text VictoryText;
 
+
 void Startwin(sf::RenderWindow &win, int NPlayer)
 {
 	std::string Player;
 
-	VictoryText.setCharacterSize(100);
+	VictoryText.setCharacterSize(70);
 	if (NPlayer == 1)
 	{
 		VictoryText.setFillColor(sf::Color::Blue);
@@ -98,7 +99,7 @@ void world(sf::RenderWindow &win)
 			{
 				CharList[0].position.x = Beta.x;
 				CharList[0].position.y = Beta.y;
-				//squareSpeed = 0;
+				
 			}
 			if (CharList[1].tank.getGlobalBounds().intersects(WallList[i].wallet.getGlobalBounds()))
 			{
@@ -552,6 +553,12 @@ int main()
 	{
 		printf("pasMur");
 	}
+
+	sf::Music music;
+	if (!music.openFromFile("Winter.ogg")) { printf("unable to load true soviet music\n"); }
+	music.setVolume(35);
+	music.setLoop(true);
+	music.play();
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
 	height = window.getSize().y;
