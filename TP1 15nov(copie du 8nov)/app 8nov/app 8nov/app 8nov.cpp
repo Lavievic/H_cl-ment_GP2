@@ -19,7 +19,7 @@ using namespace sf;
 static std::vector<Entity> CharList;
 static std::vector<Ball> BallList;
 static std::vector<Wall> WallList;
-sf::Color hsv(int hue, float sat, float val)
+/*sf::Color hsv(int hue, float sat, float val)
 {
 	hue %= 360;
 	while (hue < 0) hue += 360;
@@ -47,11 +47,11 @@ sf::Color hsv(int hue, float sat, float val)
 	case 4: return sf::Color(t * 255, p * 255, val * 255);
 	case 5: return sf::Color(val * 255, p * 255, q * 255);
 	}
-}
+}*/
 static Vector2f shPos(0, 0);
 static int height;
 static int width;
-
+bool doplay = false;
 
 int squareSpeed = 3;
 int BallSpeed = 5;
@@ -65,6 +65,8 @@ sf::FloatRect otherBox;
 Vector2f Beta;
 Vector2f Beta2;
 sf::Text VictoryText;
+sf::Font * font = new sf::Font();
+
 
 
 void Startwin(sf::RenderWindow &win, int NPlayer)
@@ -75,17 +77,18 @@ void Startwin(sf::RenderWindow &win, int NPlayer)
 	if (NPlayer == 1)
 	{
 		VictoryText.setFillColor(sf::Color::Blue);
-		Player = "Bleu";
+		Player = "1";
 	}
 	if (NPlayer == 2)
 	{
 		VictoryText.setFillColor(sf::Color::Red);
-		Player = "Rouge";
+		Player = "2";
 	}
 	VictoryText.setString("Victoire du joueur " + Player);
 	FloatRect Alpha = VictoryText.getLocalBounds();
 	VictoryText.setOrigin(Vector2f(Alpha.width / 2, Alpha.height / 2));
 	VictoryText.setPosition(Vector2f(win.getSize().x / 2, win.getSize().y - win.getSize().y / 1.1f));
+
 	int i = 0;
 }
 void world(sf::RenderWindow &win)
@@ -531,9 +534,13 @@ int main()
 {
 	bool Shoot = false;
 	bool Shoot2 = false;
-	sf::Font * font = new sf::Font();
 	
-	if (font->loadFromFile("res/DejaVuSans.ttf") == false)
+
+
+
+
+	
+	if (font->loadFromFile("Fonts/DejaVuSans.ttf") == false)
 	{
 		printf("no such font");
 	}
@@ -558,14 +565,14 @@ int main()
 
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
 	
-	/*sf::Music music;
+	sf::Music music;
 	
 	if (!music.openFromFile("music.ogg"))
 	{
 		std::cout << "ERROR" << std::endl;
 	}
 
-	music.play();*/
+	music.play();
 	
 	height = window.getSize().y;
 	width = window.getSize().x;
@@ -620,11 +627,17 @@ int main()
 	WallList.push_back(DrD);
 	WallList.push_back(DrB);
 
+	
+
 
 	window.setVerticalSyncEnabled(true);
 
 	while (window.isOpen())//on passe tout le temps DEBUT DE LA FRAME 
 	{
+		
+		
+
+		
 		sf::Event event;//recup les evenement clavier/pad
 		while (window.pollEvent(event))
 		{
@@ -647,141 +660,166 @@ int main()
 #pragma region Controls
 		if (CharList.size() > 1)
 		{
-			if (sf::Joystick::isConnected(0))
+			if (doplay)
 			{
-				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
-				if (x > 25)
+				if (sf::Joystick::isConnected(0))
 				{
-					CharList[0].position.x += squareSpeed;
-				}
-
-			}
-			if (sf::Joystick::isConnected(1))
-			{
-				float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
-				if (x > 25)
-				{
-					CharList[1].position.x += squareSpeed;
-				}
-
-			}
-			if (sf::Joystick::isConnected(0))
-			{
-				float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
-				if (x < -25)
-				{
-					CharList[0].position.x -= squareSpeed;
-
-				}
-
-			}
-			if (sf::Joystick::isConnected(1))
-			{
-				float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
-				if (x < -25)
-				{
-					CharList[1].position.x -= squareSpeed;
-
-				}
-
-			}
-			if (sf::Joystick::isConnected(0))
-			{
-				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
-				if (y > 25)
-				{
-					CharList[0].position.y += squareSpeed;
-
-				}
-
-			}
-			if (sf::Joystick::isConnected(1))
-			{
-				float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
-				if (y > 25)
-				{
-					CharList[1].position.y += squareSpeed;
-
-				}
-
-			}
-			if (sf::Joystick::isConnected(0))
-			{
-				float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
-				if (y < -25)
-				{
-					Alpha = CharList[0].position;
-					CharList[0].position.y -= squareSpeed;
-				}
-
-			}
-			if (sf::Joystick::isConnected(1))
-			{
-				float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
-				if (y < -25)
-				{
-					CharList[1].position.y -= squareSpeed;
-				}
-
-			}
-			if (sf::Joystick::isConnected)
-			{
-
-				float u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
-				float r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
-				if (u > 25 || u < -25 || r>25 || r < -25)
-				{
-					float angle = (atan2(u, r) * 180) / 3.141592654;
-					CharList[0].Viseur.setRotation(-angle);
-
-
-					if (!Shoot && sf::Joystick::getAxisPosition(0, Joystick::Z) < -50)
+					float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+					if (x > 25)
 					{
-						Ball Balle = Ball(sf::Vector2f(CharList[0].Viseur.getPosition().x - 5, CharList[0].Viseur.getPosition().y), 15);
-						Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
-						Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
-						Balle.BallLife = 0;
-						BallList.push_back(Balle);
+						CharList[0].position.x += squareSpeed;
 					}
-					if (sf::Joystick::getAxisPosition(0, Joystick::Z) < -50)
-					{
-						Shoot = true;
-					}
-					else
-					{
-						Shoot = false;
-					}
-				}
 
-			}
-			if (sf::Joystick::isConnected)
-			{
-				float u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
-				float r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
-				if (u > 25 || u < -25 || r>25 || r < -25)
+				}
+				if (sf::Joystick::isConnected(1))
 				{
-					float angle = (atan2(u, r) * 180) / 3.141592654;
-					CharList[1].Viseur.setRotation(-angle);
+					float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
+					if (x > 25)
+					{
+						CharList[1].position.x += squareSpeed;
+					}
 
-					if (!Shoot2 && sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
-					{
-						Ball Balle = Ball(CharList[1].Viseur.getPosition(), 15);
-						Balle.u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
-						Balle.r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
-						Balle.BallLife = 0;
-						BallList.push_back(Balle);
-					}
-					if (sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
-					{
-						Shoot2 = true;
-					}
-					else
-					{
-						Shoot2 = false;
-					}
 				}
+				if (sf::Joystick::isConnected(0))
+				{
+					float x = sf::Joystick::getAxisPosition(0, sf::Joystick::X);
+					if (x < -25)
+					{
+						CharList[0].position.x -= squareSpeed;
 
+					}
+
+				}
+				if (sf::Joystick::isConnected(1))
+				{
+					float x = sf::Joystick::getAxisPosition(1, sf::Joystick::X);
+					if (x < -25)
+					{
+						CharList[1].position.x -= squareSpeed;
+
+					}
+
+				}
+				if (sf::Joystick::isConnected(0))
+				{
+					float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+					if (y > 25)
+					{
+						CharList[0].position.y += squareSpeed;
+
+					}
+
+				}
+				if (sf::Joystick::isConnected(1))
+				{
+					float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
+					if (y > 25)
+					{
+						CharList[1].position.y += squareSpeed;
+
+					}
+
+				}
+				if (sf::Joystick::isConnected(0))
+				{
+					float y = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+					if (y < -25)
+					{
+						Alpha = CharList[0].position;
+						CharList[0].position.y -= squareSpeed;
+					}
+
+				}
+				if (sf::Joystick::isConnected(1))
+				{
+					float y = sf::Joystick::getAxisPosition(1, sf::Joystick::Y);
+					if (y < -25)
+					{
+						CharList[1].position.y -= squareSpeed;
+					}
+
+				}
+				if (sf::Joystick::isConnected)
+				{
+
+					float u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
+					float r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
+					if (u > 25 || u < -25 || r>25 || r < -25)
+					{
+						float angle = (atan2(u, r) * 180) / 3.141592654;
+						CharList[0].Viseur.setRotation(-angle);
+
+
+						if (!Shoot && sf::Joystick::getAxisPosition(0, Joystick::Z) < -50)
+						{
+							Ball Balle = Ball(sf::Vector2f(CharList[0].Viseur.getPosition().x - 5, CharList[0].Viseur.getPosition().y), 15);
+							Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
+							Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
+							Balle.BallLife = 0;
+							BallList.push_back(Balle);
+						}
+						if (sf::Joystick::getAxisPosition(0, Joystick::Z) < -50)
+						{
+							Shoot = true;
+						}
+						else
+						{
+							Shoot = false;
+						}
+					}
+
+				}
+				if (sf::Joystick::isConnected)
+				{
+					float u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
+					float r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
+					if (u > 25 || u < -25 || r>25 || r < -25)
+					{
+						float angle = (atan2(u, r) * 180) / 3.141592654;
+						CharList[1].Viseur.setRotation(-angle);
+
+						if (!Shoot2 && sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
+						{
+							Ball Balle = Ball(CharList[1].Viseur.getPosition(), 15);
+							Balle.u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
+							Balle.r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
+							Balle.BallLife = 0;
+							BallList.push_back(Balle);
+						}
+						if (sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
+						{
+							Shoot2 = true;
+						}
+						else
+						{
+							Shoot2 = false;
+						}
+					}
+
+				}
 			}
+		}
+		if (!doplay)
+		{
+			VictoryText.setString("Press Start to Play");
+			VictoryText.setCharacterSize(80);
+			VictoryText.setFillColor(sf::Color::Green);
+			FloatRect Alpha = VictoryText.getLocalBounds();
+			VictoryText.setOrigin(Vector2f(Alpha.width / 2, Alpha.height / 2));
+			VictoryText.setPosition(Vector2f(window.getSize().x / 2, window.getSize().y - window.getSize().y / 1.1f));
+
+			window.draw(VictoryText);
+			
+		}
+		if (!doplay && sf::Joystick::isButtonPressed(0, 7))
+		{
+			doplay = true;
+			VictoryText.setString("");
+		}
+
+		if (sf::Joystick::isButtonPressed(0, 1))
+		{
+			window.close();
 		}
 #pragma endregion
 		window.clear();
