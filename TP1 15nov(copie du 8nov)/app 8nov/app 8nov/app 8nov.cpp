@@ -12,7 +12,7 @@
 #include "Entity.h"
 #include "Ball.h"
 #include "Wall.h"
-#include <Box2D/Box2D.h>
+
 #include <iostream>
 
 using namespace sf;
@@ -61,11 +61,24 @@ int Right = 1;
 sf::FloatRect boundingBox;
 Vector2f Alpha;
 sf::FloatRect otherBox;
+sf::Texture texture;
+sf::Texture textureViseur;
+sf::Texture textureR;
+sf::Texture textureViseurR;
+sf::Texture textureBall;
+sf::Texture textureBall2;
+//sf::RenderWindow window;
+
+Entity Player = Entity(Vector2f(500, 500), Vector2f(65, 65), &texture, &textureViseur);
+Entity Ennemy = Entity(Vector2f(1600, 900), Vector2f(65, 65), &textureR, &textureViseurR);
+
 
 Vector2f Beta;
 Vector2f Beta2;
 sf::Text VictoryText;
 sf::Font * font = new sf::Font();
+
+
 
 
 
@@ -514,9 +527,14 @@ void drawTank(sf::RenderWindow &win)
 {
 	for (Entity &Elem : CharList)
 	{
-		win.draw(Elem.tank);
-		win.draw(Elem.Viseur);
+		if (Elem.visible == true)
+		{
+			win.draw(Elem.tank);
+			win.draw(Elem.Viseur);
+		}
+
 		Elem.SetPosition();
+
 	}
 }
 
@@ -526,7 +544,7 @@ void drawBall(sf::RenderWindow &win)
 	{
 		win.draw(Elem.ball);
 		Elem.ball.move(Elem.u / 8, Elem.r / 8);
-
+		//Elem.ball.rotate(3);
 	}
 }
 
@@ -534,9 +552,19 @@ int main()
 {
 	bool Shoot = false;
 	bool Shoot2 = false;
+	sf::Texture texture;
+	sf::Texture textureViseur;
+	sf::Texture textureR;
+	sf::Texture textureViseurR;
+	sf::Texture textureBall;
+	sf::Texture textureBall2;
+
+	RenderWindow window(VideoMode(1920, 1080), "SFML works!");
+	Texture background;
+	background.loadFromFile("Fonts/Sand.png");
 	
 
-
+	Sprite fBackground(background);
 
 
 	
@@ -545,13 +573,9 @@ int main()
 		printf("no such font");
 	}
 	VictoryText.setFont(*font);
-	Entity Player = Entity(Vector2f(500, 500), Vector2f(80, 80));
-	Entity Ennemy = Entity(Vector2f(1600, 900), Vector2f(80, 80));
+	
 
-
-	CharList.push_back(Player);
-	CharList.push_back(Ennemy);
-
+	
 	sf::ContextSettings settings;
 	settings.antialiasingLevel = 2;
 	static RectangleShape sh;
@@ -562,9 +586,32 @@ int main()
 	}
 
 	
+	if (!texture.loadFromFile("Fonts/tank sans canon bleu.png"))
+		printf("pasTank");
+	if (!textureViseur.loadFromFile("Fonts/canon tank bleu.png"))
+		printf("pasTank");
+	if (!textureR.loadFromFile("Fonts/tank sans canon rouge.png"))
+		printf("pasTank");
+	if (!textureViseurR.loadFromFile("Fonts/canon tank rouge.png"))
+		printf("pasTank");
+	if (!textureBall.loadFromFile("Fonts/fireball.png"))
+		printf("pas ball");
+	if (!textureBall2.loadFromFile("Fonts/fireball2.png"))
+		printf("pas ball");
+	Entity Player = Entity(Vector2f(500, 500), Vector2f(65, 65), &texture, &textureViseur);
+	Entity Ennemy = Entity(Vector2f(1600, 900), Vector2f(65, 65), &textureR, &textureViseurR);
 
-	sf::RenderWindow window(sf::VideoMode(1920, 1080), "SFML works!", sf::Style::Default, settings);
+	CharList.push_back(Player);
+	CharList.push_back(Ennemy);
+
 	
+
+	
+	
+
+	
+
+
 	sf::Music music;
 	
 	if (!music.openFromFile("music.ogg"))
@@ -752,7 +799,7 @@ int main()
 
 						if (!Shoot && sf::Joystick::getAxisPosition(0, Joystick::Z) < -50)
 						{
-							Ball Balle = Ball(sf::Vector2f(CharList[0].Viseur.getPosition().x - 5, CharList[0].Viseur.getPosition().y), 15);
+							Ball Balle = Ball(sf::Vector2f(CharList[0].Viseur.getPosition().x - 5, CharList[0].Viseur.getPosition().y), 15, &textureBall);
 							Balle.u = sf::Joystick::getAxisPosition(0, sf::Joystick::U);
 							Balle.r = sf::Joystick::getAxisPosition(0, sf::Joystick::V);
 							Balle.BallLife = 0;
@@ -780,7 +827,7 @@ int main()
 
 						if (!Shoot2 && sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
 						{
-							Ball Balle = Ball(CharList[1].Viseur.getPosition(), 15);
+							Ball Balle = Ball(sf::Vector2f(CharList[1].Viseur.getPosition().x - 5, CharList[1].Viseur.getPosition().y), 15, &textureBall2);
 							Balle.u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
 							Balle.r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
 							Balle.BallLife = 0;
@@ -823,7 +870,7 @@ int main()
 		}
 #pragma endregion
 		window.clear();
-
+		window.draw(fBackground);
 		drawBall(window);
 		drawWallet(window);
 		drawTank(window);

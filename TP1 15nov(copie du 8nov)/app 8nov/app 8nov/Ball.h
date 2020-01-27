@@ -10,17 +10,24 @@ public:
 	sf::Vector2f Prepos;
 	sf::CircleShape ball;
 	sf::CircleShape BallCollider;
+	sf::Texture *texture;
 	int BallLife;
 	bool spawned = true;
 	float u, r;
-	Ball(sf::Vector2f pos, float size)
+	Ball(sf::Vector2f pos, float size, sf::Texture* tex)
 	{
 
 		ball.setRadius(size);
 		ball.setOrigin(sf::Vector2f(size / 2, size / 2));
-		position = pos;
-		ball.setFillColor(sf::Color::Red);
+		position = pos;		
 		ball.setPosition(pos);
+
+		texture = tex;
+		if (texture)
+		{
+			ball.setTexture(texture);
+
+		}
 	}
 	void SetPosition()
 	{
