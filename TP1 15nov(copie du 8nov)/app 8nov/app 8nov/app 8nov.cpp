@@ -618,7 +618,7 @@ int main()
 	{
 		std::cout << "ERROR" << std::endl;
 	}
-
+	music.setVolume(35);
 	music.play();
 	
 	height = window.getSize().y;
