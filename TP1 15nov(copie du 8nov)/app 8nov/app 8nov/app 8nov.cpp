@@ -624,6 +624,7 @@ void Reset(sf::RenderWindow &win)
 	WallList.push_back(DrH);
 	WallList.push_back(DrD);
 	WallList.push_back(DrB);
+	BallList.push_back(Balle);
 }
 
 
@@ -809,7 +810,7 @@ int main()
 #pragma region Controls
 		if (CharList.size() > 1)
 		{
-			if (doplay)
+			if (doplay && !EndGame)
 			{
 				if (sf::Joystick::isConnected(0))
 				{
