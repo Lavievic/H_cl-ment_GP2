@@ -1,0 +1,114 @@
+﻿  pch.cpp
+  b2BroadPhase.cpp
+  b2CollideCircle.cpp
+  b2CollideEdge.cpp
+  b2CollidePolygon.cpp
+  b2Collision.cpp
+  b2Distance.cpp
+  b2DynamicTree.cpp
+  b2TimeOfImpact.cpp
+  b2ChainShape.cpp
+  b2CircleShape.cpp
+  b2EdgeShape.cpp
+  b2PolygonShape.cpp
+  b2BlockAllocator.cpp
+  b2Draw.cpp
+  b2Math.cpp
+  b2Settings.cpp
+  b2StackAllocator.cpp
+  b2Timer.cpp
+  b2Body.cpp
+  b2ContactManager.cpp
+  Compilation en cours...
+  b2Fixture.cpp
+  b2Island.cpp
+  b2World.cpp
+  b2WorldCallbacks.cpp
+  b2ChainAndCircleContact.cpp
+  b2ChainAndPolygonContact.cpp
+  b2CircleContact.cpp
+  b2Contact.cpp
+  b2ContactSolver.cpp
+  b2EdgeAndCircleContact.cpp
+  b2EdgeAndPolygonContact.cpp
+  b2PolygonAndCircleContact.cpp
+  b2PolygonContact.cpp
+  b2DistanceJoint.cpp
+  b2FrictionJoint.cpp
+  b2GearJoint.cpp
+  b2Joint.cpp
+  b2MotorJoint.cpp
+  b2MouseJoint.cpp
+  b2PrismaticJoint.cpp
+  Compilation en cours...
+  b2PulleyJoint.cpp
+  b2RevoluteJoint.cpp
+  b2RopeJoint.cpp
+  b2WeldJoint.cpp
+  b2WheelJoint.cpp
+  b2Rope.cpp
+  app 8nov.cpp
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(103): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(626): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(627): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(628): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(629): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(629): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(789): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(796): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(819): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(825): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(856): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+  Ball.cpp
+  Entity.cpp
+  Lib.cpp
+  Wall.cpp
+sfml-graphics.lib(sfml-graphics-2.dll) : fatal error LNK1112: type d'ordinateur module 'x86' en conflit avec le type d'ordinateur cible 'x64'

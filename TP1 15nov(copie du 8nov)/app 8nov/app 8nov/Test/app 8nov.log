@@ -1,0 +1,103 @@
+﻿  app 8nov.cpp
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(82): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(83): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(84): error C2371: 'Left' : redéfinition ; types de base différents
+  c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(62): note: voir la déclaration de 'Left'
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(84): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(85): error C2371: 'Right' : redéfinition ; types de base différents
+  c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(63): note: voir la déclaration de 'Right'
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(85): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(85): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(135): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(142): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(177): warning C4018: '<' : incompatibilité signed/unsigned
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(698): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(699): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(700): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(701): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(701): warning C4244: 'argument' : conversion de 'int' en 'T', perte possible de données
+          with
+          [
+              T=float
+          ]
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(874): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(881): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(904): warning C4551: liste d'arguments manquante dans l'appel de fonction
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(910): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
+c:\workspace\h_cl-ment_gp2\tp1 15nov(copie du 8nov)\app 8nov\app 8nov\app 8nov.cpp(941): warning C4244: 'argument' : conversion de 'T' en 'T', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+          and
+          [
+              T=float
+          ]

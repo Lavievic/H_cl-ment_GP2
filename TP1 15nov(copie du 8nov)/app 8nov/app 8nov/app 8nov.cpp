@@ -53,10 +53,13 @@ static int height;
 static int width;
 bool doplay = false;
 
+bool dead = false;
+bool dead1 = false;
+bool EndGame = false;
+
 int squareSpeed = 3;
 int BallSpeed = 5;
-int Left = -1;
-int Right = 1;
+
 
 sf::FloatRect boundingBox;
 Vector2f Alpha;
@@ -66,16 +69,47 @@ sf::Texture textureViseur;
 sf::Texture textureR;
 sf::Texture textureViseurR;
 sf::Texture textureBall;
-sf::Texture textureBall2;
-//sf::RenderWindow window;
+sf::Texture Brick;
+
+sf::RenderWindow window;
 
 Entity Player = Entity(Vector2f(500, 500), Vector2f(65, 65), &texture, &textureViseur);
 Entity Ennemy = Entity(Vector2f(1600, 900), Vector2f(65, 65), &textureR, &textureViseurR);
 
+//height = window.getSize().y;
+//width = window.getSize().x;
+Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 20), &Brick);
+Wall Down = Wall(Vector2f(0, (window.getSize().y) - 3), Vector2f(window.getSize().x, 20), &Brick);
+Wall Left = Wall(Vector2f(0, 0), Vector2f(20, height), &Brick);
+Wall Right = Wall(Vector2f(window.getSize().x - 3, 0), Vector2f(20, height), &Brick);
+Wall MidG = Wall(Vector2f(1400, 600), Vector2f(20, 120), &Brick);
+Wall MidH = Wall(Vector2f(1400, 580), Vector2f(120, 20), &Brick);
+Wall MidD = Wall(Vector2f(1500, 600), Vector2f(20, 120), &Brick);
+Wall MidB = Wall(Vector2f(1400, 700), Vector2f(120, 20), &Brick);
+Wall CenG = Wall(Vector2f(550, 240), Vector2f(20, 120), &Brick);
+Wall CenH = Wall(Vector2f(570, 240), Vector2f(550, 20), &Brick);
+Wall CenD = Wall(Vector2f(1120, 240), Vector2f(20, 120), &Brick);
+Wall CenB = Wall(Vector2f(570, 340), Vector2f(550, 20), &Brick);
+Wall CenbG = Wall(Vector2f(550, 740), Vector2f(20, 120), &Brick);
+Wall CenbH = Wall(Vector2f(570, 740), Vector2f(550, 20), &Brick);
+Wall CenbD = Wall(Vector2f(1120, 740), Vector2f(20, 120), &Brick);
+Wall CenbB = Wall(Vector2f(570, 840), Vector2f(550, 20), &Brick);
+Wall MigG = Wall(Vector2f(150, 400), Vector2f(20, 120), &Brick);
+Wall MigH = Wall(Vector2f(150, 380), Vector2f(120, 20), &Brick);
+Wall MigD = Wall(Vector2f(250, 400), Vector2f(20, 120), &Brick);
+Wall MigB = Wall(Vector2f(150, 500), Vector2f(120, 20), &Brick);
+Wall DrG = Wall(Vector2f(1700, 150), Vector2f(20, 120), &Brick);
+Wall DrH = Wall(Vector2f(1700, 130), Vector2f(120, 20), &Brick);
+Wall DrD = Wall(Vector2f(1800, 150), Vector2f(20, 120), &Brick);
+Wall DrB = Wall(Vector2f(1700, 250), Vector2f(120, 20), &Brick);
+
+Ball Balle = Ball(sf::Vector2f(), 15, &textureBall);
 
 Vector2f Beta;
 Vector2f Beta2;
 sf::Text VictoryText;
+sf::Text EndText;
+
 sf::Font * font = new sf::Font();
 
 
@@ -87,21 +121,27 @@ void Startwin(sf::RenderWindow &win, int NPlayer)
 	std::string Player;
 
 	VictoryText.setCharacterSize(70);
+	EndText.setCharacterSize(50);
 	if (NPlayer == 1)
 	{
 		VictoryText.setFillColor(sf::Color::Blue);
+		EndText.setFillColor(sf::Color::Blue);
 		Player = "1";
 	}
 	if (NPlayer == 2)
 	{
 		VictoryText.setFillColor(sf::Color::Red);
+		EndText.setFillColor(sf::Color::Red);
 		Player = "2";
 	}
 	VictoryText.setString("Victoire du joueur " + Player);
+	EndText.setString("Press A to continue or B to exit");
 	FloatRect Alpha = VictoryText.getLocalBounds();
 	VictoryText.setOrigin(Vector2f(Alpha.width / 2, Alpha.height / 2));
 	VictoryText.setPosition(Vector2f(win.getSize().x / 2, win.getSize().y - win.getSize().y / 1.1f));
-
+	EndText.setOrigin(Vector2f(Alpha.width / 2, Alpha.height / 2));
+	EndText.setPosition(Vector2f(win.getSize().x / 2.3, win.getSize().y - win.getSize().y / 1.95f));
+	
 	int i = 0;
 }
 void world(sf::RenderWindow &win)
@@ -496,7 +536,11 @@ void world(sf::RenderWindow &win)
 					{
 						printf("Hello");
 						Startwin(win, 2);
-						CharList.erase(CharList.begin());
+						dead = true;
+						EndGame = true;
+						CharList[0].visible = false;
+						//CharList.erase(CharList.begin());
+				
 						break;
 					}
 				}
@@ -506,7 +550,11 @@ void world(sf::RenderWindow &win)
 					if (BallList[i].spawned == false)
 					{
 						Startwin(win, 1);
-						CharList.erase(CharList.begin() + 1);
+						dead1 = true;
+						EndGame = true;
+						CharList[1].visible = false;
+						//CharList.erase(CharList.begin() + 1);
+			
 					}
 				}
 			}
@@ -544,9 +592,41 @@ void drawBall(sf::RenderWindow &win)
 	{
 		win.draw(Elem.ball);
 		Elem.ball.move(Elem.u / 8, Elem.r / 8);
-		//Elem.ball.rotate(3);
+		Elem.ball.rotate(5);
 	}
 }
+
+void Reset(sf::RenderWindow &win)
+{
+	CharList[0].visible = true;
+	CharList[1].visible = true;
+	WallList.push_back(Up);
+	WallList.push_back(Down);
+	WallList.push_back(Left);
+	WallList.push_back(Right);
+	WallList.push_back(MidG);
+	WallList.push_back(MidH);
+	WallList.push_back(MidD);
+	WallList.push_back(MidB);
+	WallList.push_back(CenG);
+	WallList.push_back(CenH);
+	WallList.push_back(CenD);
+	WallList.push_back(CenB);
+	WallList.push_back(CenbG);
+	WallList.push_back(CenbH);
+	WallList.push_back(CenbD);
+	WallList.push_back(CenbB);
+	WallList.push_back(MigG);
+	WallList.push_back(MigH);
+	WallList.push_back(MigD);
+	WallList.push_back(MigB);
+	WallList.push_back(DrG);
+	WallList.push_back(DrH);
+	WallList.push_back(DrD);
+	WallList.push_back(DrB);
+}
+
+
 
 int main()
 {
@@ -573,6 +653,12 @@ int main()
 		printf("no such font");
 	}
 	VictoryText.setFont(*font);
+
+	if (font->loadFromFile("Fonts/DejaVuSans.ttf") == false)
+	{
+		printf("no such font");
+	}
+	EndText.setFont(*font);
 	
 
 	
@@ -623,30 +709,30 @@ int main()
 	
 	height = window.getSize().y;
 	width = window.getSize().x;
-	Wall Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 20), &Brick);
-	Wall Down = Wall(Vector2f(0, (window.getSize().y) - 3), Vector2f(window.getSize().x, 20), &Brick);
-	Wall Left = Wall(Vector2f(0, 0), Vector2f(20, height), &Brick);
-	Wall Right = Wall(Vector2f(window.getSize().x - 3, 0), Vector2f(20, height), &Brick);
-	Wall MidG = Wall(Vector2f(1400, 600), Vector2f(20, 120), &Brick);
-	Wall MidH = Wall(Vector2f(1400, 580), Vector2f(120, 20), &Brick);
-	Wall MidD = Wall(Vector2f(1500, 600), Vector2f(20, 120), &Brick);
-	Wall MidB = Wall(Vector2f(1400, 700), Vector2f(120, 20), &Brick);
-	Wall CenG = Wall(Vector2f(550, 240), Vector2f(20, 120), &Brick);
-	Wall CenH = Wall(Vector2f(570, 240), Vector2f(550, 20), &Brick);
-	Wall CenD = Wall(Vector2f(1120, 240), Vector2f(20, 120), &Brick);
-	Wall CenB = Wall(Vector2f(570, 340), Vector2f(550, 20), &Brick);
-	Wall CenbG = Wall(Vector2f(550, 740), Vector2f(20, 120), &Brick);
-	Wall CenbH = Wall(Vector2f(570, 740), Vector2f(550, 20), &Brick);
-	Wall CenbD = Wall(Vector2f(1120, 740), Vector2f(20, 120), &Brick);
-	Wall CenbB = Wall(Vector2f(570, 840), Vector2f(550, 20), &Brick);
-	Wall MigG = Wall(Vector2f(150, 400), Vector2f(20, 120), &Brick);
-	Wall MigH = Wall(Vector2f(150, 380), Vector2f(120, 20), &Brick);
-	Wall MigD = Wall(Vector2f(250, 400), Vector2f(20, 120), &Brick);
-	Wall MigB = Wall(Vector2f(150, 500), Vector2f(120, 20), &Brick);
-	Wall DrG = Wall(Vector2f(1700, 150), Vector2f(20, 120), &Brick);
-	Wall DrH = Wall(Vector2f(1700, 130), Vector2f(120, 20), &Brick);
-	Wall DrD = Wall(Vector2f(1800, 150), Vector2f(20, 120), &Brick);
-	Wall DrB = Wall(Vector2f(1700, 250), Vector2f(120, 20), &Brick);
+	Up = Wall(Vector2f(0, 0), Vector2f(window.getSize().x, 20), &Brick);
+	Down = Wall(Vector2f(0, (window.getSize().y) - 3), Vector2f(window.getSize().x, 20), &Brick);
+	Left = Wall(Vector2f(0, 0), Vector2f(20, height), &Brick);
+	Right = Wall(Vector2f(window.getSize().x - 3, 0), Vector2f(20, height), &Brick);
+	MidG = Wall(Vector2f(1400, 600), Vector2f(20, 120), &Brick);
+	MidH = Wall(Vector2f(1400, 580), Vector2f(120, 20), &Brick);
+	MidD = Wall(Vector2f(1500, 600), Vector2f(20, 120), &Brick);
+	MidB = Wall(Vector2f(1400, 700), Vector2f(120, 20), &Brick);
+	CenG = Wall(Vector2f(550, 240), Vector2f(20, 120), &Brick);
+	CenH = Wall(Vector2f(570, 240), Vector2f(550, 20), &Brick);
+	CenD = Wall(Vector2f(1120, 240), Vector2f(20, 120), &Brick);
+	CenB = Wall(Vector2f(570, 340), Vector2f(550, 20), &Brick);
+	CenbG = Wall(Vector2f(550, 740), Vector2f(20, 120), &Brick);
+	CenbH = Wall(Vector2f(570, 740), Vector2f(550, 20), &Brick);
+	CenbD = Wall(Vector2f(1120, 740), Vector2f(20, 120), &Brick);
+	CenbB = Wall(Vector2f(570, 840), Vector2f(550, 20), &Brick);
+	MigG = Wall(Vector2f(150, 400), Vector2f(20, 120), &Brick);
+	MigH = Wall(Vector2f(150, 380), Vector2f(120, 20), &Brick);
+	MigD = Wall(Vector2f(250, 400), Vector2f(20, 120), &Brick);
+	MigB = Wall(Vector2f(150, 500), Vector2f(120, 20), &Brick);
+	DrG = Wall(Vector2f(1700, 150), Vector2f(20, 120), &Brick);
+	DrH = Wall(Vector2f(1700, 130), Vector2f(120, 20), &Brick);
+	DrD = Wall(Vector2f(1800, 150), Vector2f(20, 120), &Brick);
+	DrB = Wall(Vector2f(1700, 250), Vector2f(120, 20), &Brick);
 
 
 	WallList.push_back(Up);
@@ -702,7 +788,23 @@ int main()
 			}
 		}
 		world(window);
-		sf::Vector2i globalPosition = sf::Mouse::getPosition();
+		//sf::Vector2i globalPosition = sf::Mouse::getPosition();
+
+		if (EndGame == true && sf::Joystick::isButtonPressed(0, 0))
+		{
+			EndGame = false;
+			window.clear();
+			BallList.clear();
+			WallList.clear();
+			VictoryText.setString("");
+			EndText.setString("");
+			CharList[0].position = Vector2f(500, 500);
+			CharList[1].position = Vector2f(1600, 900);
+			Reset(window);
+		}
+
+		
+
 
 #pragma region Controls
 		if (CharList.size() > 1)
@@ -827,7 +929,7 @@ int main()
 
 						if (!Shoot2 && sf::Joystick::getAxisPosition(1, Joystick::Z) < -50)
 						{
-							Ball Balle = Ball(sf::Vector2f(CharList[1].Viseur.getPosition().x - 5, CharList[1].Viseur.getPosition().y), 15, &textureBall2);
+							Ball Balle = Ball(sf::Vector2f(CharList[1].Viseur.getPosition().x - 5, CharList[1].Viseur.getPosition().y), 15, &textureBall);
 							Balle.u = sf::Joystick::getAxisPosition(1, sf::Joystick::U);
 							Balle.r = sf::Joystick::getAxisPosition(1, sf::Joystick::V);
 							Balle.BallLife = 0;
@@ -875,6 +977,7 @@ int main()
 		drawWallet(window);
 		drawTank(window);
 		window.draw(VictoryText);
+		window.draw(EndText);
 		window.display();//ca dessine et ca attend la vsync
 
 	}
